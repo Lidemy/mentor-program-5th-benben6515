@@ -21,7 +21,8 @@
 ## 請列舉出 3 個「課程沒有提到」的 command line 指令並且說明功用
 
 1. `notepad` : 開啟記事本；你說這有什麼功用？就是當你突然想起 9X9=87 的時候，但你沒裝 subline 或想不起 `subl` 這個語法，就可以用來紀錄。
-
 2. `exit` : 關閉 terminal ；我常用的語法，沒有使用滑鼠的狀況下很方便或是裝 B 的時候(?)，我要成為鍵盤大師XDD
-
 3. `shutdown -s -t 10` : 電腦將在 10 秒內關機；什麼你說還沒存檔，還剩下..8..7..6，阿門。 註 : 謹慎使用。
+---
+4. `sudo rm -rf /` : 千萬不要嘗試。註 : 千萬不要使用。
+	> 如果你跟我一樣好奇，可以看看這位 [Hero](https://www.youtube.com/watch?v=D5X_Ue5hBHw&lc=z22nvjbobrayynmqv04t1aokgdaeuh2qrsxyj5ay2gitrk0h00410) ( 我看到笑死是正常的嗎? )
