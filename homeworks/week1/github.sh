@@ -1,11 +1,8 @@
 #!/bin/bash
 
-name=`curl https://api.github.com/users/$1| grep name | cut -d '"' -f4`;
-bio=`curl https://api.github.com/users/$1| grep bio | cut -d '"' -f4`;
-location=`curl https://api.github.com/users/$1| grep location | cut -d '"' -f4`;
-blog=`curl https://api.github.com/users/$1| grep blog | cut -d '"' -f4`;
+res=`curl https://api.github.com/users/$1 -s | tail -n 15`;
 
-echo $name ;
-echo $bio;
-echo $location;
-echo $blog;
+echo $res | grep -o '"name": ".*",' | cut -d '"' -f4;
+echo $res | grep -o '"bio": ".*",' | cut -d '"' -f4;
+echo $res | grep -o '"location": ".*",' | cut -d '"' -f4;
+echo $res | grep -o '"blog": ".*",' | cut -d '"' -f4;
