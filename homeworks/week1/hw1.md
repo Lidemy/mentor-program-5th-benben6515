@@ -13,3 +13,8 @@
 |\*open a pull request                  |等助教改完，合併 branch    |
 |git pull origin master                 |pull remote 端到 local 端  |
 |git branch -d week1                    |刪除作業 branch            |
+
+
+*update
+
+`git branch -d week1` 刪除作業 branch
