@@ -1,5 +1,5 @@
 function reverse(str) {
-    arr = str.split('');
+    let arr = str.split('');
     let reverseArr = [];
     for(let i = arr.length; i > 0; i--){
         reverseArr.push(arr[i-1]);

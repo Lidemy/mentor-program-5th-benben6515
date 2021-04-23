@@ -1,25 +1,49 @@
 ``` js
-function isValid(arr) {
-  for(var i=0; i<arr.length; i++) {
-    if (arr[i] <= 0) return 'invalid'
-  }
-  for(var i=2; i<arr.length; i++) {
-    if (arr[i] !== arr[i-1] + arr[i-2]) return 'invalid'
-  }
-  return 'valid'
-}
+/*line 0*/  function isValid(arr) {
+/*line 1*/    for(var i=0; i<arr.length; i++) {
+/*line 2*/      if (arr[i] <= 0) return 'invalid'
+/*line 3*/    }
+/*line 4*/    for(var i=2; i<arr.length; i++) {
+/*line 5*/      if (arr[i] !== arr[i-1] + arr[i-2]) return 'invalid'
+/*line 6*/    }
+/*line 7*/    return 'valid'
+/*line 8*/  }
 
 isValid([3, 5, 8, 13, 22, 35])
 ```
 
 ## 執行流程
-1. 跑第一個迴圈，i = 0，如果當中有負數，結束並 return 'invalid' ( 這邊的 i 是第一個迴圈的 )
-2. 第一個迴圈完，i = 1，此時如果 **arr.length <= 2 不會執行第二個迴圈，結束並 return 'Valid'**
-3. 跑第二個迴圈，i = 2，如果 arr[2] !== arr[1] + arr[0]，結束並 return 'invalid' ( 從這邊 i = 2 開始的 i 是第二個迴圈的 )
-4. 跑第二個迴圈，i = 3，如果 arr[3] !== arr[2] + arr[1]，結束並 return 'invalid'
-5. 跑第二個迴圈，i = 4，如果 arr[4] !== arr[3] + arr[2]，結束並 return 'invalid'
-6. 跑第二個迴圈，i = 5，如果 arr[5] !== arr[4] + arr[3]，結束並 return 'invalid'
-7. 兩個迴圈都跑完，**當中都沒有 return 'isValid' 的話，最後結束並 return 'valid'**
+01. 執行 line 1，**進入第一個迴圈**，宣告變數 i = 0，檢查是否 i < arr.length ( 長度為 5 )？ 是，繼續往下執行。
+02. 執行 line 2，此時 i = 0，進入 if 判斷式，檢查是否 arr[0] < = 0？ 否，結束 if 判斷式。
+03. 執行 line 3，此時 i = 0，結束第一次迴圈，i++，此時 i = 1，返回 line 1。
+04. 執行 line 1，此時 i = 1，檢查是否 i < arr.length ( 長度為 5 )？ 是，繼續往下執行。
+05. 執行 line 2，此時 i = 1，進入 if 判斷式，檢查是否 arr[1] < = 0？ 否，結束 if 判斷式。
+06. 執行 line 3，此時 i = 1，結束第一次迴圈，i++，此時 i = 2，返回 line 1。
+07. 執行 line 1，此時 i = 2，檢查是否 i < arr.length ( 長度為 5 )？ 是，繼續往下執行。
+08. 執行 line 2，此時 i = 2，進入 if 判斷式，檢查是否 arr[2] < = 0？ 否，結束 if 判斷式。
+09. 執行 line 3，此時 i = 2，結束第一次迴圈，i++，此時 i = 3，返回 line 1。
+10. 執行 line 1，此時 i = 3，檢查是否 i < arr.length ( 長度為 5 )？ 是，繼續往下執行。
+11. 執行 line 2，此時 i = 3，進入 if 判斷式，檢查是否 arr[3] < = 0？ 否，結束 if 判斷式。
+12. 執行 line 3，此時 i = 3，結束第一次迴圈，i++，此時 i = 4，返回 line 1。
+13. 執行 line 1，此時 i = 4，檢查是否 i < arr.length ( 長度為 5 )？ 是，繼續往下執行。
+14. 執行 line 2，此時 i = 4，進入 if 判斷式，檢查是否 arr[4] < = 0？ 否，結束 if 判斷式。
+15. 執行 line 3，此時 i = 4，結束第一次迴圈，i++，此時 i = 5，返回 line 1。
+16. 執行 line 1，此時 i = 5，檢查是否 i < arr.length ( 長度為 5 )？ 否，**結束第一個迴圈**，往 line 4 執行。
+
+---
+
+17. 執行 line 4，**進入第二個迴圈**，宣告變數 i = 2，檢查是否 i < arr.length ( 長度為 5 )？ 是，繼續往下執行。
+18. 執行 line 5，此時 i = 2，進入 if 判斷式，檢查是否 arr[2] 不等於 arr[1] + arr[0]？ 否，結束 if 判斷式。
+19. 執行 line 6，此時 i = 2，結束第一次迴圈，i++，此時 i = 3，返回 line 4。
+20. 執行 line 4，此時 i = 3，檢查是否 i < arr.length ( 長度為 5 )？ 是，繼續往下執行。
+21. 執行 line 5，此時 i = 3，進入 if 判斷式，檢查是否 arr[3] 不等於 arr[2] + arr[1]？ 否，結束 if 判斷式。
+22. 執行 line 6，此時 i = 3，結束第一次迴圈，i++，此時 i = 4，返回 line 4。
+23. 執行 line 4，此時 i = 4，檢查是否 i < arr.length ( 長度為 5 )？ 是，繼續往下執行。
+24. 執行 line 5，此時 i = 4，進入 if 判斷式，檢查是否 arr[4] 不等於 arr[3] + arr[2]？ 否，結束 if 判斷式。
+25. 執行 line 6，此時 i = 4，結束第一次迴圈，i++，此時 i = 5，返回 line 4。
+26. 執行 line 4，此時 i = 5，檢查是否 i < arr.length ( 長度為 5 )？ 否，**結束第二個迴圈**，往 line 7 執行。
+27. 執行 line 7，因為執行到 return 了，return 'valid' 並結束 function。
+
 
 ## 解釋
 

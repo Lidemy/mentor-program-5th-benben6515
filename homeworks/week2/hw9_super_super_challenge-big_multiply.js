@@ -3,40 +3,26 @@ function multiply(a, b) {
     // 取得 a, b => 轉成陣列 => 反轉，方便計算用
     let Aarr = a.split("").reverse();
     let Barr = b.split("").reverse();
-    // Carr 為最後 return 的陣列
-    let Carr = [];
-    //  acc 為累加用陣列
-    let acc = [];
 
-    // 將 acc 累加陣列，每項都設為 0 
-    // a * b 最長長度為 : a.length + b.length
-    for(let i = 0; i < Aarr.length + Barr.length; i++){
-        acc[i] = 0;
-    }
+    // acc 為累加用陣列，每項都設為 0 ，a * b 最長位數長度為 : a.length + b.length
+    let acc = Array(a.length + b.length).fill(0);
+
 
     // 分別累加 A * B
     for(let i = 0; i < Aarr.length; i++){
         for (let j = 0; j < Barr.length; j++){
             let num = Aarr[i] * Barr[j];
-            acc[i+j+1] += Math.floor(num / 10);
-            acc[i+j] += num % 10;
+            acc[i+j+1] += Math.floor((acc[i+j] + num) / 10);
+            acc[i+j] = (acc[i+j] + num) % 10;
         }
     }
 
-    // 將 acc 轉換成 Carr 陣列
-    let n = acc.length
-    for(let i = 0; i < n; i++){
-        let num = acc[i];
-        Carr.push(num % 10);
-        acc[i+1] += Math.floor(num / 10);
-    }
-    
     // 去掉前面多的 0
-    if (!Carr[Carr.length-1]){
-        Carr.pop();
+    if (!acc[acc.length-1]){
+        acc.pop();
     }
 
-    return Carr.reverse().join("");
+    return acc.reverse().join("");
 }
 
 // test data
