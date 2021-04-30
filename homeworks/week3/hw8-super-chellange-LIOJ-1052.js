@@ -58,7 +58,9 @@ function solve(lines) {
     }
   }
 
+  // debug 用
+  // console.log(sumArr)    // 可以看到所有重量的最高價錢
+
   // 輸出 max value
-  const arr = Object.values(sumArr)
-  console.log(Math.max(...arr))
+  console.log(Math.max(...(Object.values(sumArr))))
 }
