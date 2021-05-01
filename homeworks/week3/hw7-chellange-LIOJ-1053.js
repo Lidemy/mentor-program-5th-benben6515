@@ -9,19 +9,15 @@ function solve(lines) {
     maze.push(lines[i].split(''))
   }
 
-  // 設置起點 [i, j]
-  const i = 0
-  const j = 0
-
-  // 放入 Queue 檢查
-  queue.push([i, j])
+  // 將起點 [0 , 0] 放入 Queue
+  queue.push([0, 0])
   while (queue.length) {
     const [i, j] = queue[0]
 
     // 終止條件 : 當 [i, j] 等於右下角出口時
     if (i === maze.length - 1 && j === maze[0].length - 1) break
 
-    // 如果未尋訪過，將 maze[i][j] 設為 i + j 步數，表示尋訪
+    // 如果未尋訪過，將 maze[i][j] 設為 i + j 步數，表示已尋訪
     if (maze[i][j] === '.') {
       maze[i][j] = `${i + j}`
     }
