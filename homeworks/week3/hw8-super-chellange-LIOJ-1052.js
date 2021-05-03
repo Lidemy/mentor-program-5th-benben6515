@@ -1,3 +1,4 @@
+// 過程可參考 : https://hackmd.io/VEjiIM_SQjO-OnQ2YibtmQ?view
 // eslint-disable-next-line
 function solve(lines) {
   // 取得最大數量、最大重量、物品數量
@@ -18,47 +19,35 @@ function solve(lines) {
   const subset = [[]]
 
   // 總和物件 { 'weight1' : value1, 'weight2' : value2, ... }
-  const sumArr = {}
+  const sumObj = {}
 
   // 產生可能子集合 & 加總物件
   for (let i = 0; i < item.length; i++) {
     const n = subset.length
     for (let j = 0; j < n; j++) {
-      // 迭代產生子集
+      // 累加當前物品重量，如果超過數量就跳過
       const temp = subset[j].concat([i])
       if (temp.length > maxN) continue
-      subset.push(temp)
 
-      // 累加當前物品重量
+      // 累加當前物品重量，如果超過重量就跳過
       const weight = temp.reduce((acc, cur) => acc + item[cur][0], 0)
+      if (weight > maxW) continue
 
-      // 如果超過重量就刪除當前子集
-      if (weight > maxW) {
-        subset.pop()
-        continue
-      }
-
-      // 累加當前物品價值
+      // 累加當前物品價值，如果少於當前重量的價值就跳過
       const value = temp.reduce((acc, cur) => acc + item[cur][1], 0)
+      if (value < sumObj[weight]) continue
 
-      // 檢查當前 sumArr 物件裡有沒有一樣的 key (weight)
-      if (Object.prototype.hasOwnProperty.call(sumArr, weight)) {
-        // 如果等重的物品，價值高於原本物件的就更新價值，如果沒有就刪除子集
-        if (sumArr[weight] < value) {
-          sumArr[weight] = value
-        } else {
-          subset.pop()
-          continue
-        }
+      // 設定最大價值
+      sumObj[weight] = value
 
-      // 如果沒有一樣的 key (weight) 就加入
-      } else {
-        sumArr[weight] = value
-      }
+      // 如果前面 3 個 if 篩選都過 => 加入子集，這就是我要的子集
+      subset.push(temp)
     }
   }
 
+  // debug 用
+  // console.log(sumObj)    // 可以看到所有重量的最高價錢，很療癒(?)
+
   // 輸出 max value
-  const arr = Object.values(sumArr)
-  console.log(Math.max(...arr))
+  console.log(Math.max(...(Object.values(sumObj))))
 }

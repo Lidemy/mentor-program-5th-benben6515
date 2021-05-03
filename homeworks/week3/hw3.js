@@ -1,16 +1,14 @@
 // eslint-disable-next-line
 function solve(lines) {
-  const arr = []
   for (let i = 1; i < lines.length; i++) {
-    arr.push(Number(lines[i]))
+    console.log(isPrime(Number(lines[i])) ? 'Prime' : 'Composite')
   }
+}
 
-  for (let i = 0; i < arr.length; i++) {
-    let isPrime = true
-    arr[i] === 1 && (isPrime = false)
-    for (let j = 2; j < arr[i] - 1; j++) {
-      arr[i] % j === 0 && (isPrime = false)
-    }
-    console.log(isPrime ? 'Prime' : 'Composite')
+function isPrime(n) {
+  if (n === 1) return false
+  for (let j = 2; j < Math.ceil(Math.sqrt(n)); j++) {
+    if (n % j === 0) return false
   }
+  return true
 }

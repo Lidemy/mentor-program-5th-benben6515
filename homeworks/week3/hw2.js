@@ -10,6 +10,6 @@ function solve(lines) {
   }
 
   for (let i = n; i < m; i++) {
-    isNarcissistic(i) && console.log(i)
+    if (isNarcissistic(i)) console.log(i)
   }
 }
