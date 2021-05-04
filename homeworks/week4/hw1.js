@@ -1,12 +1,12 @@
 const requset = require('request')
 
 const option = {
-  url: 'https://lidemy-book-store.herokuapp.com/books'
+  url: 'https://lidemy-book-store.herokuapp.com/books?_limit=10'
 }
 
 function callback(err, res, body) {
   const obj = JSON.parse(body)
-  for (let i = 0; i < 10; i++) {
+  for (const i in obj) {
     console.log(obj[i].name)
   }
 }

@@ -9,7 +9,7 @@ const options = {
 }
 
 function callback(err, res, body) {
-  if (res.statusCode === 200) {
+  if (res.statusCode >= 200 && res.statusCode < 300) {
     const obj = JSON.parse(body)
 
     const { name, capital } = obj[0]

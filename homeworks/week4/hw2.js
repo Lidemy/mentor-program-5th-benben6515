@@ -7,14 +7,14 @@ const str2 = process.argv[4]
 
 if (act === 'list') {
   const option = {
-    url: 'https://lidemy-book-store.herokuapp.com/books'
+    url: 'https://lidemy-book-store.herokuapp.com/books?_limit=20'
   }
 
   requset(option, (err, res, body) => {
     const obj = JSON.parse(body)
 
-    for (let i = 0; i < obj.length; i++) {
-      console.log(obj[i])
+    for (const i in obj) {
+      console.log(obj[i].name)
     }
   })
 }
