@@ -17,12 +17,7 @@ function callback(err, res, body) {
       const currencies = objs[i].currencies[0].code
       const callingCodes = objs[i].callingCodes[0]
 
-      const output = `
-        國家：${name}
-        首都：${capital}
-        貨幣：${currencies}
-        國碼：${callingCodes}
-      `
+      const output = `國家：${name} \n首都：${capital} \n貨幣：${currencies} \n國碼：${callingCodes}`
 
       console.log(output)
       if (i === objs.length - 1) return

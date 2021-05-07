@@ -38,7 +38,7 @@ function handleList() {
     const objs = JSON.parse(body)
 
     for (const i of objs) {
-      console.log(i.id, i.name)
+      console.log(`${i.id}`.padEnd(4), i.name)
     }
   })
 }
@@ -54,8 +54,7 @@ function handleRead() {
     const objs = JSON.parse(body)
 
     for (const item of objs) {
-      item.id === Number(str1) && console.log(item.name)
-      return
+      if (item.id === Number(str1)) return console.log(item.name)
     }
     return console.log('no this id of books!')
   })
@@ -81,7 +80,7 @@ function handleCreate() {
 
 function handleDlete() {
   const option = {
-    url: `${API}/str1`
+    url: `${API}/${str1}`
   }
 
   requset.delete(option, (err, res, body) => {
@@ -89,14 +88,14 @@ function handleDlete() {
     if (err) return console.log('操作失敗', err)
     const objs = JSON.parse(body)
 
-    console.log(objs)
+    console.log(objs, '刪除成功')
   })
 }
 
 function handleUpdate() {
   if (str1 === undefined || str2 === undefined) return console.log('id or name can not be empty!')
   const option = {
-    url: `${API}/str1`,
+    url: `${API}/${str1}`,
     form: {
       name: str2
     }

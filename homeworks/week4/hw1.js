@@ -5,9 +5,11 @@ const option = {
 }
 
 function callback(err, res, body) {
+  if (res.statusCode < 200 || res.statusCode >= 300) return console.log('stausCode', res.statusCode)
+  if (err) return console.log('操作失敗', err)
   const objs = JSON.parse(body)
   for (const item of objs) {
-    console.log(item.name)
+    console.log(`${item.id}`.padEnd(4), item.name)
   }
 }
 
