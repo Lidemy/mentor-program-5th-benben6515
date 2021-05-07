@@ -10,20 +10,19 @@ const options = {
 
 function callback(err, res, body) {
   if (res.statusCode >= 200 && res.statusCode < 300) {
-    const obj = JSON.parse(body)
+    const objs = JSON.parse(body)
 
-    const { name, capital } = obj[0]
-    const currencies = obj[0].currencies[0].code
-    const callingCodes = obj[0].callingCodes[0]
+    for (let i = 0; i < objs.length; i++) {
+      const { name, capital } = objs[i]
+      const currencies = objs[i].currencies[0].code
+      const callingCodes = objs[i].callingCodes[0]
 
-    const output = `
-      國家：${name}
-      首都：${capital}
-      貨幣：${currencies}
-      國碼：${callingCodes}
-    `
+      const output = `國家：${name} \n首都：${capital} \n貨幣：${currencies} \n國碼：${callingCodes}`
 
-    console.log(output)
+      console.log(output)
+      if (i === objs.length - 1) return
+      console.log('================')
+    }
   } else {
     console.log('「找不到國家資訊」。')
   }

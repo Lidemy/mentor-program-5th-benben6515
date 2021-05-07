@@ -27,5 +27,5 @@ API ( Application Programming Interface )
 | 回傳所有餐廳資料 | GET    | /restaurants     | _limit:限制回傳資料數量           | /restaurants?_limit=5 |
 | 回傳單一餐廳資料 | GET    | /restaurants/:id | 無                    | /books/10      |
 | 新增餐廳   | POST   | /restaurants     | name: 餐廳名稱 | 無              |
-| 更改餐廳   | PATCH   | /books/:id     | name: 新餐廳名稱 | 無              |
-| 刪除餐廳   | DELETE   | /books/:id     | 無 | 無              |
+| 更改餐廳   | PATCH   | /restaurants/:id     | name: 新餐廳名稱 | 無              |
+| 刪除餐廳   | DELETE   | /restaurants/:id     | 無 | 無              |

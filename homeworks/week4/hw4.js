@@ -9,12 +9,14 @@ const options = {
 }
 
 function callback(err, res, body) {
-  const obj = JSON.parse(body)
-  const { top } = obj
+  if (res.statusCode < 200 || res.statusCode >= 300) return console.log('stausCode', res.statusCode)
+  if (err) return console.log('操作失敗', err)
+  const objs = JSON.parse(body)
+  const { top } = objs
 
-  for (const i in top) {
-    const viewers = top[i].viewers.toString().padEnd(8)
-    const game = top[i].game.name
+  for (const item of top) {
+    const viewers = item.viewers.toString().padEnd(8)
+    const game = item.game.name
 
     console.log(viewers, game)
   }
