@@ -3,9 +3,7 @@ const process = require('process')
 
 const API = 'https://lidemy-book-store.herokuapp.com/books'
 
-const act = process.argv[2]
-const str1 = process.argv[3]
-const str2 = process.argv[4]
+const [, , act, str1, str2] = process.argv
 
 switch (act) {
   case 'list':
