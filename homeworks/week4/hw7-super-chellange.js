@@ -107,7 +107,7 @@ function handleCreate() {
     // 必須附帶的 header parameters
     headers: {
       'Content-Type': 'application/json',
-      'Content-Length': data.length
+      'Content-Length': Buffer.byteLength(data)
     }
   }
 
@@ -169,7 +169,7 @@ function handleUpdate() {
     // 必須附帶的 header parameters
     headers: {
       'Content-Type': 'application/json',
-      'Content-Length': data.length
+      'Content-Length': Buffer.byteLength(data)
     }
   }
 
