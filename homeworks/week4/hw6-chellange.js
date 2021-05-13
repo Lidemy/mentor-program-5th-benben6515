@@ -20,7 +20,7 @@ const LIMIT = 100
 const TOTAL = 200
 
 // 用來放所有實況主的 array
-const allList = []
+let allList = []
 
 function allRequest(limit, offset, total) {
   // 將 URL 附帶 headers & query parameters
@@ -30,7 +30,7 @@ function allRequest(limit, offset, total) {
       Accept: 'application/vnd.twitchtv.v5+json',
       'Client-ID': 'cy5f8bwxxn4n5vgcjdlkamp5d9rdbz'
     },
-    query: {
+    qs: {
       game,
       offset,
       limit
@@ -66,6 +66,7 @@ function allRequest(limit, offset, total) {
     }
 
     // 如果 allList 有 200 個就印出來
+    allList = allList.slice(0, 200)
     console.table(allList)
   })
 }

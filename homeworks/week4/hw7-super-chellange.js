@@ -31,7 +31,7 @@ switch (act) {
     handleUpdate()
     break
   default:
-    console.log('no of this cammand, try again.')
+    console.log(`Command ${act} does not exist!`)
 }
 
 function handleList() {
@@ -54,7 +54,7 @@ function handleList() {
       }
 
       for (const i in objs) {
-        console.log(objs[i].name)
+        console.log(`${objs[i].id}`.padEnd(4), objs[i].name)
       }
     })
   })
@@ -122,7 +122,7 @@ function handleCreate() {
         console.log(e)
       }
 
-      console.log(`新增成功 : ${objs}`)
+      console.log(`新增成功， id: ${objs.id}, name: ${objs.name}`)
     })
   })
 
@@ -146,15 +146,8 @@ function handleDelete() {
   const req = https.request(options, (res) => {
     if (res.statusCode < 200 || res.statusCode >= 300) return console.log('stausCode', res.statusCode)
 
-    res.on('data', (d) => {
-      let objs = {}
-      try {
-        objs = JSON.parse(d)
-      } catch (e) {
-        console.log(e)
-      }
-
-      console.log(`刪除成功: ${objs}`)
+    res.on('data', () => {
+      console.log(`刪除成功， id: ${str1}`)
     })
   })
 
@@ -191,7 +184,7 @@ function handleUpdate() {
         console.log(e)
       }
 
-      console.log(`修改成功: ${objs}`)
+      console.log(`修改成功， id: ${objs.id}, name: ${objs.name}`)
     })
   })
 
