@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scalcc=1.0">
+    <title>Hacker News</title>
+    <style>
+        html,body {
+            margin: 0;
+            padding: 0;
+        }
+        * {
+            /* debug 用 */
+            /* outline: 1px solid black; */
+
+            position: relative;
+            font-family: Verdana, Geneva, 微軟正黑體, sans-serif;
+            font-size: 12px;
+            line-height: 1.5rem;
+            transition: 0.3s ease-in;
+        }
+        .wrapper {
+            position: absolute;
+            width: 86%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin: 0px;
+            margin-top: 12px;
+            max-width: 960px;
+            background-color: #eee;
+            box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.2);
+            overflow: hidden;
+            border-radius: 5px 5px 0px 0px;
+        }
+
+        /* navbar ----------------------------------------------- */
+        .top__pic, .top__wrapper, .top__title, .top__items, .top__login {
+            display: inline-block;
+        }
+        .top {
+            background-color: #f60;
+            height: 28px;
+        }
+        .top__title {
+            font-weight: 900;
+            font-size: 18px;
+        }
+        .top__login {
+            position: absolute;
+            right: 4px;
+            top: 2px;
+            border: 1px solid #000;
+            border-radius: 4px;
+            box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.2);
+            padding: 2px 3px;
+            background-color: rgba(0,0,0,0.2);
+        }
+        .top__login>a{
+            color: #000;
+        }
+        .top__login:hover {
+            box-shadow: 0px 0px 3px 2px gold;
+            background-color: inherit;
+            text-decoration: none;
+
+        }
+        .top__pic {
+            width: 20px;
+            height: 20px;
+            background: URL(https://news.ycombinator.com/y18.gif);
+            background-size: cover;
+            border: 1px solid white;
+            top: 50%;
+            left: 3px;
+            transform: translateY(-50%);
+        }
+        a {
+            text-decoration: none;
+            color: #828282;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .top__items>a {
+            color: #000;
+        }
+        .top__items>a+a {
+            margin: 2px 3px;
+        }
+
+        /* sections ----------------------------------------- */
+        .section__wrapper {
+            margin-bottom: 6px;
+            left: 20px;
+        }
+        .section__title {
+            display: inline-block;
+            font-size: 14px;
+            width: 100%;
+        }
+        .section__icon {
+            position: absolute;
+            display: inline-block;
+        }
+        .section__infos {
+            width: 100%;
+            color: #828282;
+        }
+        li {
+            display: block;
+            list-style: none;
+        }
+        .section__icon {
+            display: list-item;
+        }
+        .section__icon::marker {
+            color: #828282;
+            content: counter(list-item) "." ;
+        }
+        .more {
+            font-weight: bold;
+            margin: 5px 60px;
+            color: #000;
+        }
+
+        /* footer ----------------------------------------- */
+
+        hr {
+            background-color: #f60;
+            border: 1px solid #f60;
+        }
+        .footer {
+            width: 100%;
+        }
+        .footer__items, .footer__search__bar {
+            margin: 10px 0px;
+            display: inline-block;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .footer__items {
+            margin-top: 30px;
+        }
+        .footer__items>a {
+            color: #000;
+        }
+        .footer__search, .footer__search__bar,input {
+            display: inline-block;
+        }
+        .footer__search__bar {
+            width: 60%;
+        }
+        .footer__search__bar>input {
+            width: 80%;
+        }
+        .footer__search {
+            color: #484848;
+        }
+
+        /* RWD ----------------------------------------- */
+        @media (max-width:768px) {
+            * {
+                font-size: 10px
+            }
+
+            .wrapper {
+                width: 100%;
+                margin: 0px;
+                padding: 0px;
+            }
+            .top {
+                height: 56px;
+                background-color: #f60;
+            }
+            .top__login, .top__wrapper {
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            .top__wrapper {
+                width: 75%;
+                left: 10%;
+            }
+            .top__pic {
+                position: absolute;
+                left: 2%;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            .top__title {
+                font-size: 18px;
+            }
+            
+            .section__wrapper {
+                width: 90%;
+            }
+            .footer__search__bar {
+                width: 90%;
+            }
+            .footer__search__bar>input {
+                width: 80%;
+            }
+        }
+        @media (max-width:376px) {
+            .footer__search__bar {
+                width: 90%;
+            }
+            .footer__search {
+                display: block;
+                position: relative;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <nav class="top">
+            <div class="top__pic"></div>
+            <div class="top__wrapper">
+                <div class="top__title">Hacker News</div>
+                <div class="top__items">
+                    <a href="#">new</a> | 
+                    <a href="#">past</a> | 
+                    <a href="#">commment</a> | 
+                    <a href="#">ask</a> | 
+                    <a href="#">show</a> | 
+                    <a href="#">jobs</a> | 
+                    <a href="#">submit</a>
+                </div>
+            </div>
+            <div class="top__login">
+                <a href="#">login</a>
+            </div>
+        </nav>
+        <section class="sections">
+            <ol>
+                <li>
+                    <div class="section__icon">🔼</div>
+                    <div class="section__wrapper">
+                        <div class="section__title">Coin Carbon Cap – PoW cryptocurrencies ranked by energy efficiency
+                            <a href="#" class="section__link">(coincarboncat.com)</a>
+                        </div>
+                        <div class="section__infos">232 points by
+                            <a href="#" class="author">GBiT</a> 7 hours ago | 
+                            <a href="#" class="hide">hide</a> | 
+                            <a href="#" class="comments">165 comments</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="section__icon">🔼</div>
+                    <div class="section__wrapper">
+                        <div class="section__title">SeaGlass: City-Wide IMSI-Catcher Detection (2017)
+                            <a href="#" class="section__link">(washington.edu)</a>
+                        </div>
+                        <div class="section__infos">307 points by
+                            <a href="#" class="author">kogir</a> 12 hours ago | 
+                            <a href="#" class="hide">hide</a> | 
+                            <a href="#" class="comments">46 comments</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="section__icon">🔼</div>
+                    <div class="section__wrapper">
+                        <div class="section__title">The stack monoid revisited
+                            <a href="#" class="section__link">(raphlinus.github.io)</a>
+                        </div>
+                        <div class="section__infos">153 points by
+                            <a href="#" class="author">harperlee</a> 10 hours ago | 
+                            <a href="#" class="hide">hide</a> | 
+                            <a href="#" class="comments">3 comments</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="section__icon">🔼</div>
+                    <div class="section__wrapper">
+                        <div class="section__title">HTML Notepad – HTML WYSIWYG editor
+                            <a href="#" class="section__link">(html-notepad.com)</a>
+                        </div>
+                        <div class="section__infos">200 points by
+                            <a href="#" class="author">Tomte</a> 12 hours ago | 
+                            <a href="#" class="hide">hide</a> | 
+                            <a href="#" class="comments">59 comments</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="section__icon">🔼</div>
+                    <div class="section__wrapper">
+                        <div class="section__title">Building a personal website in 2021
+                            <a href="#" class="section__link">(kosmulski.org))</a>
+                        </div>
+                        <div class="section__infos">359 points by
+                            <a href="#" class="author">mkosmul</a> 11 hours ago | 
+                            <a href="#" class="hide">hide</a> | 
+                            <a href="#" class="comments">144 comments</a>
+                        </div>
+                    </div>
+                </li><li>
+                    <div class="section__icon">🔼</div>
+                    <div class="section__wrapper">
+                        <div class="section__title">Coin Carbon Cap – PoW cryptocurrencies ranked by energy efficiency
+                            <a href="#" class="section__link">(coincarboncat.com)</a>
+                        </div>
+                        <div class="section__infos">232 points by
+                            <a href="#" class="author">GBiT</a> 7 hours ago | 
+                            <a href="#" class="hide">hide</a> | 
+                            <a href="#" class="comments">165 comments</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="section__icon">🔼</div>
+                    <div class="section__wrapper">
+                        <div class="section__title">SeaGlass: City-Wide IMSI-Catcher Detection (2017)
+                            <a href="#" class="section__link">(washington.edu)</a>
+                        </div>
+                        <div class="section__infos">307 points by
+                            <a href="#" class="author">kogir</a> 12 hours ago | 
+                            <a href="#" class="hide">hide</a> | 
+                            <a href="#" class="comments">46 comments</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="section__icon">🔼</div>
+                    <div class="section__wrapper">
+                        <div class="section__title">The stack monoid revisited
+                            <a href="#" class="section__link">(raphlinus.github.io)</a>
+                        </div>
+                        <div class="section__infos">153 points by
+                            <a href="#" class="author">harperlee</a> 10 hours ago | 
+                            <a href="#" class="hide">hide</a> | 
+                            <a href="#" class="comments">3 comments</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="section__icon">🔼</div>
+                    <div class="section__wrapper">
+                        <div class="section__title">HTML Notepad – HTML WYSIWYG editor
+                            <a href="#" class="section__link">(html-notepad.com)</a>
+                        </div>
+                        <div class="section__infos">200 points by
+                            <a href="#" class="author">Tomte</a> 12 hours ago | 
+                            <a href="#" class="hide">hide</a> | 
+                            <a href="#" class="comments">59 comments</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="section__icon">🔼</div>
+                    <div class="section__wrapper">
+                        <div class="section__title">Building a personal website in 2021
+                            <a href="#" class="section__link">(kosmulski.org))</a>
+                        </div>
+                        <div class="section__infos">359 points by
+                            <a href="#" class="author">mkosmul</a> 11 hours ago | 
+                            <a href="#" class="hide">hide</a> | 
+                            <a href="#" class="comments">144 comments</a>
+                        </div>
+                    </div>
+                </li><li>
+                    <div class="section__icon">🔼</div>
+                    <div class="section__wrapper">
+                        <div class="section__title">Coin Carbon Cap – PoW cryptocurrencies ranked by energy efficiency
+                            <a href="#" class="section__link">(coincarboncat.com)</a>
+                        </div>
+                        <div class="section__infos">232 points by
+                            <a href="#" class="author">GBiT</a> 7 hours ago | 
+                            <a href="#" class="hide">hide</a> | 
+                            <a href="#" class="comments">165 comments</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="section__icon">🔼</div>
+                    <div class="section__wrapper">
+                        <div class="section__title">SeaGlass: City-Wide IMSI-Catcher Detection (2017)
+                            <a href="#" class="section__link">(washington.edu)</a>
+                        </div>
+                        <div class="section__infos">307 points by
+                            <a href="#" class="author">kogir</a> 12 hours ago | 
+                            <a href="#" class="hide">hide</a> | 
+                            <a href="#" class="comments">46 comments</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="section__icon">🔼</div>
+                    <div class="section__wrapper">
+                        <div class="section__title">The stack monoid revisited
+                            <a href="#" class="section__link">(raphlinus.github.io)</a>
+                        </div>
+                        <div class="section__infos">153 points by
+                            <a href="#" class="author">harperlee</a> 10 hours ago | 
+                            <a href="#" class="hide">hide</a> | 
+                            <a href="#" class="comments">3 comments</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="section__icon">🔼</div>
+                    <div class="section__wrapper">
+                        <div class="section__title">HTML Notepad – HTML WYSIWYG editor
+                            <a href="#" class="section__link">(html-notepad.com)</a>
+                        </div>
+                        <div class="section__infos">200 points by
+                            <a href="#" class="author">Tomte</a> 12 hours ago | 
+                            <a href="#" class="hide">hide</a> | 
+                            <a href="#" class="comments">59 comments</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="section__icon">🔼</div>
+                    <div class="section__wrapper">
+                        <div class="section__title">Building a personal website in 2021
+                            <a href="#" class="section__link">(kosmulski.org))</a>
+                        </div>
+                        <div class="section__infos">359 points by
+                            <a href="#" class="author">mkosmul</a> 11 hours ago | 
+                            <a href="#" class="hide">hide</a> | 
+                            <a href="#" class="comments">144 comments</a>
+                        </div>
+                    </div>
+                </li><li>
+                    <div class="section__icon">🔼</div>
+                    <div class="section__wrapper">
+                        <div class="section__title">Coin Carbon Cap – PoW cryptocurrencies ranked by energy efficiency
+                            <a href="#" class="section__link">(coincarboncat.com)</a>
+                        </div>
+                        <div class="section__infos">232 points by
+                            <a href="#" class="author">GBiT</a> 7 hours ago | 
+                            <a href="#" class="hide">hide</a> | 
+                            <a href="#" class="comments">165 comments</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="section__icon">🔼</div>
+                    <div class="section__wrapper">
+                        <div class="section__title">SeaGlass: City-Wide IMSI-Catcher Detection (2017)
+                            <a href="#" class="section__link">(washington.edu)</a>
+                        </div>
+                        <div class="section__infos">307 points by
+                            <a href="#" class="author">kogir</a> 12 hours ago | 
+                            <a href="#" class="hide">hide</a> | 
+                            <a href="#" class="comments">46 comments</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="section__icon">🔼</div>
+                    <div class="section__wrapper">
+                        <div class="section__title">The stack monoid revisited
+                            <a href="#" class="section__link">(raphlinus.github.io)</a>
+                        </div>
+                        <div class="section__infos">153 points by
+                            <a href="#" class="author">harperlee</a> 10 hours ago | 
+                            <a href="#" class="hide">hide</a> | 
+                            <a href="#" class="comments">3 comments</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="section__icon">🔼</div>
+                    <div class="section__wrapper">
+                        <div class="section__title">HTML Notepad – HTML WYSIWYG editor
+                            <a href="#" class="section__link">(html-notepad.com)</a>
+                        </div>
+                        <div class="section__infos">200 points by
+                            <a href="#" class="author">Tomte</a> 12 hours ago | 
+                            <a href="#" class="hide">hide</a> | 
+                            <a href="#" class="comments">59 comments</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="section__icon">🔼</div>
+                    <div class="section__wrapper">
+                        <div class="section__title">Building a personal website in 2021
+                            <a href="#" class="section__link">(kosmulski.org))</a>
+                        </div>
+                        <div class="section__infos">359 points by
+                            <a href="#" class="author">mkosmul</a> 11 hours ago | 
+                            <a href="#" class="hide">hide</a> | 
+                            <a href="#" class="comments">144 comments</a>
+                        </div>
+                    </div>
+                </li><li>
+                    <div class="section__icon">🔼</div>
+                    <div class="section__wrapper">
+                        <div class="section__title">Coin Carbon Cap – PoW cryptocurrencies ranked by energy efficiency
+                            <a href="#" class="section__link">(coincarboncat.com)</a>
+                        </div>
+                        <div class="section__infos">232 points by
+                            <a href="#" class="author">GBiT</a> 7 hours ago | 
+                            <a href="#" class="hide">hide</a> | 
+                            <a href="#" class="comments">165 comments</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="section__icon">🔼</div>
+                    <div class="section__wrapper">
+                        <div class="section__title">SeaGlass: City-Wide IMSI-Catcher Detection (2017)
+                            <a href="#" class="section__link">(washington.edu)</a>
+                        </div>
+                        <div class="section__infos">307 points by
+                            <a href="#" class="author">kogir</a> 12 hours ago | 
+                            <a href="#" class="hide">hide</a> | 
+                            <a href="#" class="comments">46 comments</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="section__icon">🔼</div>
+                    <div class="section__wrapper">
+                        <div class="section__title">The stack monoid revisited
+                            <a href="#" class="section__link">(raphlinus.github.io)</a>
+                        </div>
+                        <div class="section__infos">153 points by
+                            <a href="#" class="author">harperlee</a> 10 hours ago | 
+                            <a href="#" class="hide">hide</a> | 
+                            <a href="#" class="comments">3 comments</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="section__icon">🔼</div>
+                    <div class="section__wrapper">
+                        <div class="section__title">HTML Notepad – HTML WYSIWYG editor
+                            <a href="#" class="section__link">(html-notepad.com)</a>
+                        </div>
+                        <div class="section__infos">200 points by
+                            <a href="#" class="author">Tomte</a> 12 hours ago | 
+                            <a href="#" class="hide">hide</a> | 
+                            <a href="#" class="comments">59 comments</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="section__icon">🔼</div>
+                    <div class="section__wrapper">
+                        <div class="section__title">Building a personal website in 2021
+                            <a href="#" class="section__link">(kosmulski.org))</a>
+                        </div>
+                        <div class="section__infos">359 points by
+                            <a href="#" class="author">mkosmul</a> 11 hours ago | 
+                            <a href="#" class="hide">hide</a> | 
+                            <a href="#" class="comments">144 comments</a>
+                        </div>
+                    </div>
+                </li><li>
+                    <div class="section__icon">🔼</div>
+                    <div class="section__wrapper">
+                        <div class="section__title">Coin Carbon Cap – PoW cryptocurrencies ranked by energy efficiency
+                            <a href="#" class="section__link">(coincarboncat.com)</a>
+                        </div>
+                        <div class="section__infos">232 points by
+                            <a href="#" class="author">GBiT</a> 7 hours ago | 
+                            <a href="#" class="hide">hide</a> | 
+                            <a href="#" class="comments">165 comments</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="section__icon">🔼</div>
+                    <div class="section__wrapper">
+                        <div class="section__title">SeaGlass: City-Wide IMSI-Catcher Detection (2017)
+                            <a href="#" class="section__link">(washington.edu)</a>
+                        </div>
+                        <div class="section__infos">307 points by
+                            <a href="#" class="author">kogir</a> 12 hours ago | 
+                            <a href="#" class="hide">hide</a> | 
+                            <a href="#" class="comments">46 comments</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="section__icon">🔼</div>
+                    <div class="section__wrapper">
+                        <div class="section__title">The stack monoid revisited
+                            <a href="#" class="section__link">(raphlinus.github.io)</a>
+                        </div>
+                        <div class="section__infos">153 points by
+                            <a href="#" class="author">harperlee</a> 10 hours ago | 
+                            <a href="#" class="hide">hide</a> | 
+                            <a href="#" class="comments">3 comments</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="section__icon">🔼</div>
+                    <div class="section__wrapper">
+                        <div class="section__title">HTML Notepad – HTML WYSIWYG editor
+                            <a href="#" class="section__link">(html-notepad.com)</a>
+                        </div>
+                        <div class="section__infos">200 points by
+                            <a href="#" class="author">Tomte</a> 12 hours ago | 
+                            <a href="#" class="hide">hide</a> | 
+                            <a href="#" class="comments">59 comments</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="section__icon">🔼</div>
+                    <div class="section__wrapper">
+                        <div class="section__title">Building a personal website in 2021
+                            <a href="#" class="section__link">(kosmulski.org))</a>
+                        </div>
+                        <div class="section__infos">359 points by
+                            <a href="#" class="author">mkosmul</a> 11 hours ago | 
+                            <a href="#" class="hide">hide</a> | 
+                            <a href="#" class="comments">144 comments</a>
+                        </div>
+                    </div>
+                </li>
+            </ol>
+        </section>
+        <a class="more">More</a>
+        <hr>
+        <footer class="footer">
+            <div class="footer__items">
+                <a href="#">Guidelines</a>
+                <a href="#">FAQ</a> | 
+                <a href="#">Lists</a> | 
+                <a href="#">API</a> | 
+                <a href="#">Security</a> | 
+                <a href="#">Legal</a> | 
+                <a href="#">Apply to YC</a> | 
+                <a href="#">Contact</a>
+            </div>
+            <div class="footer__search__bar">
+                <div class="footer__search">Search: </div>
+                <input type="text" name="search" placeholder="search somthing...">
+            </div>
+        </footer>
+    </div>
+    
+</body>
+</html>
