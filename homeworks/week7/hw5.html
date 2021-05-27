@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carousle</title>
+    <style>
+        * {
+            /* border: 1px solid #000; */ 
+            margin: 0;
+            padding: 0;
+            transition: all .4s ease-in;
+        }
+        body {
+            background-color: #ccc;
+        }
+        .wrapper {
+            width: 60%;
+            max-width: 600px;
+            min-width: 300px;
+            margin: 100px auto;
+            position: relative;
+            text-align: center;
+            background-color: #eee;
+            border-radius: 0px 0px 8px 8px;
+            box-shadow: 0px 0px 1px 2px rgba(0,0,0,0.2)
+        }
+        .photo {
+            margin: auto;
+            width: 100%;
+            height: 100%;
+            filter: brightness(0.8);
+        }
+        .photo:hover {
+            filter: brightness(1);
+        }
+
+        .left, .right {
+            width: 30px;
+            height: 30px;
+            display: block;
+            position: absolute;
+            top: 48%;
+            transform: translateY(-50%);
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+        .left {
+            left: 0;
+        }
+        .left:after, .left:before {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 5px;
+            height: 6px;
+            width: 20px;
+            border-radius: 3px;
+            background-color: rgba(0,0,0,0.5);
+            transform: rotate(45deg);
+            transform-origin: top left;
+        }
+        .left:before {
+            transform: rotate(-45deg);
+            transform-origin: bottom left;
+        }
+        .left:hover:after, .left:hover:before {
+            background-color: rgba(255,255,255,0.8);
+            box-shadow: 0px 0px 2px 2px rgba(255,255,255,0.3)
+        }
+        .right {
+            right: 0;
+        }
+        .right:after, .right:before {
+            content: '';
+            display: block;
+            position: absolute;
+            right: 5px;
+            height: 6px;
+            width: 20px;
+            border-radius: 3px;
+            background-color: rgba(0,0,0,0.3);
+            transform: rotate(45deg);
+            transform-origin: bottom right;
+        }
+        .right:before {
+            transform: rotate(-45deg);
+            transform-origin: top right;
+        }
+        .right:hover:after, .right:hover:before {
+            background-color: rgba(255,255,255,0.8);
+            box-shadow: 0px 0px 2px 2px rgba(255,255,255,0.3)
+        }
+
+        .bars {
+            display: flex;
+            justify-content: center;
+        }
+        .bar {
+            width: 20px;
+            height: 4px;
+            border-radius: 2px;
+            background-color: rgba(0,0,0,0.7);
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        .bar.selected {
+            background-color: rgba(0,0,0,0.2);
+        }
+        .pagenation {
+            font-weight: bold;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <img class="photo" src="https://picsum.photos/300/200?random=1" alt="隨機圖片">
+        <button class="left"></button>
+        <button class="right"></button>
+        <div class="bars"></div>
+        <div class="pagenation"></div>
+    </div>
+    <script>       
+        const arr = [
+            'https://picsum.photos/300/200?random=1',
+            'https://picsum.photos/300/200?random=2',
+            'https://picsum.photos/300/200?random=3',
+            'https://picsum.photos/300/200?random=4',
+            'https://picsum.photos/300/200?random=5',
+            'https://picsum.photos/300/200?random=6',
+        ];
+        const left = document.querySelector('.left')
+        const right = document.querySelector('.right')
+        const photo = document.querySelector('.photo')
+        const bars = document.querySelector('.bars')
+        const pagenation = document.querySelector('.pagenation')
+        let pageIdx = 0
+        
+        // init
+        for (let i = 0; i < arr.length; i++) {
+            let div = document.createElement('div')
+            div.classList.add('bar')
+            div.setAttribute('data-num', i)
+            bars.appendChild(div)
+        }        
+        function handImgChange(){
+            photo.src = arr[pageIdx]
+            pagenation.innerText = `${pageIdx + 1} /  ${arr.length}`
+        }
+        function barClass(n) {
+            let item = document.querySelectorAll('.bar')
+            for (let i = 0; i < arr.length; i++) {
+                if (i === Number(n)) {
+                    item[i].classList.add('selected')
+                } else {
+                    item[i].classList.remove('selected')
+                }
+            }
+        }
+        barClass(pageIdx)
+        handImgChange()
+
+        // main
+        left.addEventListener('click', e => {
+            pageIdx--
+            if(pageIdx < 0){
+                pageIdx = arr.length - 1
+            }
+            barClass(pageIdx)
+            handImgChange()
+        })
+
+        right.addEventListener('click', e => {
+            pageIdx++
+            if(pageIdx > arr.length - 1){
+                pageIdx = 0
+            }
+            barClass(pageIdx)
+            handImgChange()
+        })
+
+
+
+        bars.addEventListener('click', e => {
+            if (e.target.classList.contains('bar')) {
+                pageIdx = Number(e.target.getAttribute('data-num'))
+                e.target.classList.add('selected')
+                barClass(pageIdx)
+                handImgChange()
+            }
+        })
+
+
+
+    </script>
+</body>
+</html>

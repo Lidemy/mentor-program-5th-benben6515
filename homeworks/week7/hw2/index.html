@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>餐廳 FQA</title>
+
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* reset css */
+        * {
+            font-family: Questrial, 微軟正黑體;
+            position: relative;
+            transition: 0.3s ease-in;
+            letter-spacing: 1px;
+            line-height: 1.5em;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 5;
+        }
+
+        .navbar {
+            box-shadow: -1.4px -1.4px 6px 0 #97a2a0;
+        }
+
+        .navbar__wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 84px;
+            background: white;
+            padding: 0px 100px;
+            /* max-width: 1280px; */
+            margin: 0px auto;
+            padding: 0px 12px;
+        }
+
+        .navbar__site-name {
+            font-size: 36px;
+            color: #489846;
+            margin-left: 8%;
+        }
+
+        /* navbar__list css ----------------------------------------- */
+        .navbar__list {
+            font-size: 18px;
+            list-style: none;
+            margin: 0px;
+            padding: 0px;
+            display: flex;
+        }
+
+        .navbar__list li {
+            margin-left: 12px;
+            border-radius: 8px;
+            transition: 0.3s ease-in;
+        }
+
+        .navbar__list li.active,
+        .navbar__list li:hover {
+            color: white;
+            background: #ff7286;
+        }
+
+        .navbar__list li a {
+            display: block;
+            text-decoration: none;
+            color: black;
+            padding: 12px 24px;
+        }
+
+        .navbar__list li.active a,
+        .navbar__list li:hover a {
+            color: white;
+        }
+
+
+        /* section css ----------------------------------------- */
+        .section {
+            text-align: center;
+        }
+
+        div.title {
+            color: black;
+            font-size: 36px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            padding-left: 17px;
+            border-left: 15px solid lightgreen;
+        }
+
+        .inner__text {
+            color: black;
+            font-size: 16px;
+            line-height: 1.5em;
+            margin: 10px 20px;
+        }
+        .section__FAQ {
+            margin-bottom: 80px;
+        }
+        .section__FAQ__warrper {
+            display: flex;
+            justify-content: flex-start;
+            max-width: 960px;
+            min-width: 300px;
+            width: 80%;
+            margin: 20px auto;
+            border-bottom: 2px solid rgba(180,240,150,0.8);
+        }
+        .section__FAQ__left {
+            font-size: 24px;
+            color: #70b282;
+            text-shadow: 0px 0px 1px rgba(0,0,0,.3);
+            margin-right: 5px;
+        }
+        .section__FAQ__right {
+            display: flex;
+            flex-direction: column;
+            text-align: start;
+        }
+        .section__FAQ__question {
+            line-height: 36px;
+        }
+        .section__FAQ__answer {
+            color: #333;
+        }
+        .section__FAQ__answer.hide{
+            display: none;
+        }
+
+        /* footer -----------------------------------------*/
+        .footer__top {
+            height: 186px;
+            display: flex;
+            justify-content: space-between;
+            background-color: #e8efee;
+        }
+
+        .footer__top__left {
+            margin-left: 40px;
+            color: #484848;
+        }
+
+        .footer__top__right {
+            margin-left: 40px;
+            margin-right: 6%;
+            margin-top: 20px;
+        }
+
+        .footer__site__name {
+            font-size: 36px;
+            color: #489846;
+        }
+
+        .footer__site__map {
+            font-size: 14px;
+            color: #484848;
+        }
+
+        .footer__bottom {
+            background-color: #35564b;
+            height: 48px;
+        }
+
+        .footer__bottom__text {
+            font-size: 14px;
+            color: white;
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* RWD ----------------------------------------- */
+
+        @media (max-width: 850px) {
+            .navbar__wrapper {
+                height: 120px;
+                flex-direction: column;
+            }
+
+            .navbar__list li {
+                margin: 10px 10px;
+            }
+
+            .navbar__list li a {
+                padding: 5px 10px;
+            }
+
+
+
+            iframe {
+                width: 90%;
+            }
+
+            .footer__top {
+                height: 300px;
+                flex-direction: column-reverse;
+            }
+
+            .footer__bottom {
+                height: 96px;
+            }
+        }
+
+        
+        @media (max-width: 510px) {
+            .navbar__wrapper {
+                height: 160px;
+            }
+        }
+        @media (max-width: 376px) {
+            .navbar__site-name {
+                font-size: 24px;
+                white-space: nowrap;
+            }
+            .navbar__wrapper {
+                height: 200px;
+            }
+
+            .navbar__list {
+                display: block;
+            }
+
+            .navbar__list,
+            .navbar__list>li {
+                width: 90%;
+                margin: 1px 5px;
+                padding: 0px 10px;
+            }
+            .section__1__btn {
+                width: 100px;
+            }
+
+            .navbar__list li a {
+                margin: 0px 2px;
+                width: 90%;
+                text-align: center;
+            }
+
+            div.title {
+                font-size: 22px;
+            }
+
+            .footer__top {
+                height: 360px;
+            }
+
+            .footer__bottom {
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar__wrapper">
+            <div class="navbar__site-name">Just A Bite!</div>
+            <ul class="navbar__list">
+                <li class="active"><a href="#">抽個大獎</a></li>
+                <li><a href="#">我要點餐</a></li>
+                <li><a href="#">查詢訂單</a></li>
+                <li><a href="#">常見問題</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="section section__FAQ">
+        <div class="title">FAQ - 常見問題</div>
+        <div class="section__FAQ__warrper">
+            <div class="section__FAQ__left">Q1:</div>
+            <div class="section__FAQ__right">
+                <div class="section__FAQ__question">如何辦理退貨 ?</div>
+                <div class="section__FAQ__answer hide">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti inventore incidunt officia quasi cumque debitis voluptates excepturi sapiente eaque aperiam.</div>
+            </div>
+        </div>
+        <div class="section__FAQ__warrper">
+            <div class="section__FAQ__left">Q2:</div>
+            <div class="section__FAQ__right">
+                <div class="section__FAQ__question">目前提供那些付款方式 ?</div>
+                <div class="section__FAQ__answer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut voluptates magnam quas fuga ab sapiente, obcaecati velit esse numquam facilis?</div>
+            </div>
+        </div>
+        <div class="section__FAQ__warrper">
+            <div class="section__FAQ__left">Q3:</div>
+            <div class="section__FAQ__right">
+                <div class="section__FAQ__question">線上刷卡如何操作呢 ?</div>
+                <div class="section__FAQ__answer">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus voluptatibus adipisci quaerat quo ea impedit iusto at reiciendis consequuntur blanditiis!</div>
+            </div>
+        </div>
+        <div class="section__FAQ__warrper">
+            <div class="section__FAQ__left">Q4:</div>
+            <div class="section__FAQ__right">
+                <div class="section__FAQ__question">如何查詢目前訂單的處理情況 ?</div>
+                <div class="section__FAQ__answer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam molestias rem laboriosam quaerat atque maxime suscipit molestiae dicta a aliquid assumenda amet itaque quae quas, tenetur corrupti rerum eligendi? Aspernatur.</div>
+            </div>
+        </div>
+        <div class="section__FAQ__warrper">
+            <div class="section__FAQ__left">Q5:</div>
+            <div class="section__FAQ__right">
+                <div class="section__FAQ__question">訂單成立後，是否可以取消或是更改訂單數量及商品 ?</div>
+                <div class="section__FAQ__answer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque facere sunt laudantium impedit molestiae ipsum.</div>
+            </div>
+        </div>
+        <div class="section__FAQ__warrper">
+            <div class="section__FAQ__left">Q6:</div>
+            <div class="section__FAQ__right">
+                <div class="section__FAQ__question">我想購買的商品已經缺貨，什麼時候會進貨呢 ?</div>
+                <div class="section__FAQ__answer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus rem, obcaecati excepturi repellat sunt hic, omnis minus maxime vitae eaque distinctio provident laboriosam id, maiores magni sit quam dignissimos dolorem.</div>
+            </div>
+        </div>
+        <div class="section__FAQ__warrper">
+            <div class="section__FAQ__left">Q1:</div>
+            <div class="section__FAQ__right">
+                <div class="section__FAQ__question">如何辦理退貨 ?</div>
+                <div class="section__FAQ__answer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti inventore incidunt officia quasi cumque debitis voluptates excepturi sapiente eaque aperiam.</div>
+            </div>
+        </div>
+        <div class="section__FAQ__warrper">
+            <div class="section__FAQ__left">Q2:</div>
+            <div class="section__FAQ__right">
+                <div class="section__FAQ__question">目前提供那些付款方式 ?</div>
+                <div class="section__FAQ__answer hide">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut voluptates magnam quas fuga ab sapiente, obcaecati velit esse numquam facilis?</div>
+            </div>
+        </div>
+        <div class="section__FAQ__warrper">
+            <div class="section__FAQ__left">Q3:</div>
+            <div class="section__FAQ__right">
+                <div class="section__FAQ__question">線上刷卡如何操作呢 ?</div>
+                <div class="section__FAQ__answer">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus voluptatibus adipisci quaerat quo ea impedit iusto at reiciendis consequuntur blanditiis!</div>
+            </div>
+        </div>
+        <div class="section__FAQ__warrper">
+            <div class="section__FAQ__left">Q4:</div>
+            <div class="section__FAQ__right">
+                <div class="section__FAQ__question">如何查詢目前訂單的處理情況 ?</div>
+                <div class="section__FAQ__answer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam molestias rem laboriosam quaerat atque maxime suscipit molestiae dicta a aliquid assumenda amet itaque quae quas, tenetur corrupti rerum eligendi? Aspernatur.</div>
+            </div>
+        </div>
+        <div class="section__FAQ__warrper">
+            <div class="section__FAQ__left">Q5:</div>
+            <div class="section__FAQ__right">
+                <div class="section__FAQ__question">訂單成立後，是否可以取消或是更改訂單數量及商品 ?</div>
+                <div class="section__FAQ__answer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque facere sunt laudantium impedit molestiae ipsum.</div>
+            </div>
+        </div>
+        <div class="section__FAQ__warrper">
+            <div class="section__FAQ__left">Q6:</div>
+            <div class="section__FAQ__right">
+                <div class="section__FAQ__question">我想購買的商品已經缺貨，什麼時候會進貨呢 ?</div>
+                <div class="section__FAQ__answer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus rem, obcaecati excepturi repellat sunt hic, omnis minus maxime vitae eaque distinctio provident laboriosam id, maiores magni sit quam dignissimos dolorem.</div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="footer__top">
+            <div class="footer__top__left">
+                <p class="innter__text">餐館地址: 天上地下天堂路三分之一里六段520號</p>
+                <p class="innter__text">訂位專線：02-1314-5566</p>
+                <p class="innter__text">營業時間：週一〜週五 09:00~18:00 / 週六、週日、國定假日（含連假）休息</p>
+                <p class="innter__text">email：service@justabite.com.tw</p>
+            </div>
+            <div class="footer__top__right">
+                <div class="footer__site__name">Just A Bite!</div>
+                <div class="footer__site__map">Facebook / Instagram / Youtube</div>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <p class="footer__bottom__text">Copyright © 2020 Just A Bite All Rights Reserved. 咬一口股份有限公司版權所有</p>
+        </div>
+    </footer>
+
+    <script>
+        const question = document.querySelectorAll('.section__FAQ__question')
+        const answer = document.querySelectorAll('.section__FAQ__answer')
+        // 設定 data
+        for (let i = 0; i < answer.length; i++) {
+            question[i].setAttribute('data-num' , i)
+        }
+
+        // 將為選中的的加入 hide class
+        function clear(num=0) {
+            for (let i = 0; i < answer.length; i++) {
+                if (i !== Number(num) ) answer[i].classList.add('hide')
+            }
+        }
+        clear()
+
+        question.forEach( e => {
+            e.addEventListener('click', evt => {
+                let num = evt.target.getAttribute('data-num')
+                answer[num].classList.toggle('hide')
+                clear(num)
+            })
+        })
+
+    </script>
+</body>
+
+</html>
