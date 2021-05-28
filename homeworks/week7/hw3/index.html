@@ -170,6 +170,14 @@
     </div>
     <script>
         const textBtn = document.querySelector('.text__btn')
+        function escapeHtml(unsafe) {
+            return unsafe
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
 
         textBtn.addEventListener('click', e => {
             if (document.querySelector('.text__input').value.trim()) {
@@ -181,7 +189,7 @@
                 const li = document.createElement('li')
                 li.classList.add('item')
                 li.innerHTML = `
-                <div class="item__thing"><input class="item__check" type="checkbox"/ ><label>${msg}</lable></lab></div>
+                <div class="item__thing"><input class="item__check" type="checkbox"/ ><label>${escapeHtml(msg)}</lable></lab></div>
                 <button class="item__btn">➖</button>`
 
                 document.querySelector('.list').appendChild(li)

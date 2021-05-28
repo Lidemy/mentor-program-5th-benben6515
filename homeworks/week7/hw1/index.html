@@ -57,6 +57,7 @@
             filter:brightness(.8);
             color: rgba(255,0,0,0.7);
             font-size: 14px;
+            position: absolute;
         }
 
         .bottom {
@@ -214,10 +215,10 @@
         document.querySelector('.form').addEventListener('submit', e => {
             let whichType = ''
             
-            if (isPassed = isEmpty(name, name.getAttribute('data-type'))) e.preventDefault()
-            if (isPassed = isEmpty(email, email.getAttribute('data-type'))) e.preventDefault() 
-            if (isPassed = isEmpty(phone, phone.getAttribute('data-type'))) e.preventDefault() 
-            if (isPassed = isEmpty(how, how.getAttribute('data-type'))) e.preventDefault() 
+            if (isEmpty(name, name.getAttribute('data-type'))) e.preventDefault()
+            if (isEmpty(email, email.getAttribute('data-type'))) e.preventDefault() 
+            if (isEmpty(phone, phone.getAttribute('data-type'))) e.preventDefault() 
+            if (isEmpty(how, how.getAttribute('data-type'))) e.preventDefault() 
 
             if (type[0].checked || type[1].checked) {
                 whichType = type[0].checked ? type[0].value : type[1].value

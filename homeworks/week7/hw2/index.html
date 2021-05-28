@@ -18,7 +18,7 @@
         * {
             font-family: Questrial, 微軟正黑體;
             position: relative;
-            transition: 0.3s ease-in;
+            transition: all 0.3s ease-in;
             letter-spacing: 1px;
             line-height: 1.5em;
         }
@@ -134,9 +134,11 @@
         }
         .section__FAQ__answer {
             color: #333;
+            transform: translateY(0);
         }
         .section__FAQ__answer.hide{
             display: none;
+            transform: translateY(50px);
         }
 
         /* footer -----------------------------------------*/
