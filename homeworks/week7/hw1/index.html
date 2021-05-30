@@ -209,16 +209,16 @@
         let radios = document.querySelectorAll('input[type=radio]')
 
         function checkValid(item, itemName) {
-            let isAlerted = document.querySelector(`div[data-type=${itemName}]>.alert`)
+            let alertMessage = document.querySelector(`div[data-type=${itemName}]>.alert`)
             let position = document.querySelector(`div[data-type=${itemName}]`)
             if (item.value) {
-                if (isAlerted) position.removeChild(isAlerted)
+                if (alertMessage) position.removeChild(alertMessage)
                 return false
             } else {
                 const div = document.createElement('div')
                 div.classList.add('alert')
                 div.innerText = `${item.placeholder} 不得為空!`
-                if (isAlerted) position.removeChild(isAlerted)
+                if (alertMessage) position.removeChild(alertMessage)
                 position.appendChild(div)
                 return true
             }
@@ -233,16 +233,16 @@
                 if (checkValid(input, input.getAttribute('name'))) hasError = true
             }
 
-            let radioIsAlerted = document.querySelector(`div[data-type=type]>.alert`)
+            let radioalertMessage = document.querySelector(`div[data-type=type]>.alert`)
             let radioPosition = document.querySelector(`div[data-type=type]`)
             if (radios[0].checked || radios[1].checked) {
                 whichType = radios[0].checked ? radios[0].value : radios[1].value
-                if (radioIsAlerted) radioPosition.removeChild(radioIsAlerted)
+                if (radioalertMessage) radioPosition.removeChild(radioalertMessage)
             } else {
                 const div = document.createElement('div')
                 div.classList.add('alert')
-                div.innerText = `報名類型必須則一!`
-                if (radioIsAlerted) radioPosition.removeChild(radioIsAlerted)
+                div.innerText = `報名類型必須擇一!`
+                if (radioalertMessage) radioPosition.removeChild(radioalertMessage)
                 radioPosition.appendChild(div)
             }
 
