@@ -154,7 +154,7 @@
     <div class="wrapper">
         <div class="title">Todo List</div>
         <div class="text__wrapper">
-            <input class ="text__input" type="text" placeholder="do somthing ..." />
+            <input class ="text__input" type="text" placeholder="Do Somthing ... ( string limit 30 )" />
             <button class="text__btn" >➕</button>
         </div>
         <ol class="list">
@@ -184,7 +184,7 @@
                 let msg = document.querySelector('.text__input').value
                 if (msg.length > 30) {
                     e.preventDefault()
-                    return alert('超過 30 XX，我受不了QQ')
+                    return alert('超過 30，我受不了QQ')
                 }
                 const li = document.createElement('li')
                 li.classList.add('item')
@@ -195,8 +195,8 @@
                 document.querySelector('.list').appendChild(li)
                 document.querySelector('.text__input').value = ""
             } else {
-                alert('空白不算做事喔')
                 e.preventDefault()
+                alert('輸入空白不算做事喔')
             }
         })
 

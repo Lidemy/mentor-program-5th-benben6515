@@ -1,138 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>表單</title>
-    </head>
-    <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-            background-color: #eee;
-        }
 
-        * {
-            position: relative;
-            font-family: '微軟正黑體';
-        }
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表單</title>
+</head>
+<style>
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #eee;
+    }
 
+    * {
+        position: relative;
+        font-family: '微軟正黑體';
+    }
+
+    .form {
+        width: 40%;
+        margin-top: 100px;
+        margin-bottom: 50px;
+        padding: 20px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #fff;
+        position: relative;
+        border-top: 8px solid #fad312;
+        border-radius: 5px;
+        box-shadow: 1px 1px 4px 4px rgba(0, 0, 0, 0.2)
+    }
+
+    .title {
+        font-size: 36px;
+        color: black;
+    }
+
+    .info {
+        margin: 0px;
+    }
+
+    .subtitle {
+        font-size: 20px;
+        margin-top: 36px;
+        margin-bottom: 18px;
+    }
+
+    .warning {
+        color: red;
+    }
+
+    .name::after,
+    .email::after,
+    .phone::after,
+    .type::after,
+    .how::after {
+        content: "*";
+        display: inline-block;
+        color: red;
+        margin-left: 5px;
+    }
+
+    .alert {
+        filter: brightness(.8);
+        color: rgba(255, 0, 0, 0.7);
+        font-size: 14px;
+        position: absolute;
+    }
+
+    .bottom {
+        bottom: 2%;
+    }
+
+    .bottom>input {
+        width: 100px;
+        height: 40px;
+        margin-top: 20px;
+        background-color: #fad312;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        transition: 0.3s ease-in;
+    }
+
+    .bottom>input:hover {
+        background-color: #000;
+        color: #fad312;
+        font-weight: bold;
+    }
+
+    .remind {
+        margin: 0px;
+        margin-top: 10px;
+    }
+
+    .footer {
+        margin: 0;
+        padding: 0;
+        position: relative;
+        bottom: 0px;
+        width: 100%;
+        height: 60px;
+        background-color: black;
+        color: #888;
+    }
+
+    .footer__text {
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    /* RWD ----------------------------------------- */
+    @media (max-width:980px) {
         .form {
-            width: 40%;
-            margin-top: 100px;
-            margin-bottom: 50px;
-            padding: 20px;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #fff;
-            position: relative;
-            border-top: 8px solid #fad312;
-            border-radius: 5px;
-            box-shadow: 1px 1px 4px 4px rgba(0,0,0,0.2)
+            width: 60%;
         }
+    }
+
+    @media (max-width:768px) {
+        .form {
+            width: 80%;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            margin-top: 24px;
+            margin-bottom: 12px;
+        }
+    }
+
+    @media (max-width:376px) {
+        .form {
+            width: cal(96%-10);
+            padding: 10px;
+        }
+
         .title {
-            font-size: 36px;
+            font-size: 24px;
             color: black;
         }
-        .info {
-            margin: 0px;
-        }
+
         .subtitle {
-            font-size: 20px;
-            margin-top: 36px;
-            margin-bottom: 18px;
-        }
-        .warning {
-            color: red;
-        }
-        .name::after, .email::after, .phone::after, .type::after, .how::after {
-            content: "*";
-            display: inline-block;
-            color: red;
-            margin-left: 5px;
-        }
-        .alert {
-            filter:brightness(.8);
-            color: rgba(255,0,0,0.7);
-            font-size: 14px;
-            position: absolute;
-        }
-
-        .bottom {
-            bottom: 2%;
-        }
-        .bottom>input {
-            width: 100px;
-            height: 40px;
+            font-size: 16px;
             margin-top: 20px;
-            background-color: #fad312;
-            border-radius: 5px;
-            border: none;
-            cursor: pointer;
-            transition: 0.3s ease-in;
+            margin-bottom: 10px;
         }
-        .bottom>input:hover {
-            background-color: #000;
-            color: #fad312;
-            font-weight: bold;
-        }
-        .remind {
-            margin: 0px;
-            margin-top: 10px;
-        }
-        .footer {
-            margin: 0;
-            padding: 0;
-            position: relative;
-            bottom: 0px;
-            width: 100%;
-            height: 60px;
-            background-color: black;
-            color: #888;
-        }
-        .footer__text {
-            margin: 0;
-            padding: 0;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
+    }
+</style>
 
-        /* RWD ----------------------------------------- */
-        @media (max-width:980px) {
-            .form {
-                width: 60%;
-            }
-        }
-        @media (max-width:768px) {
-            .form {
-                width: 80%;
-            }
-            .subtitle {
-                font-size: 18px;
-                margin-top: 24px;
-                margin-bottom: 12px;
-            }
-        }
-        @media (max-width:376px) {
-            .form {
-                width: cal(96%-10);
-                padding: 10px;
-            }
-            .title {
-                font-size: 24px;
-                color: black;
-            }
-            .subtitle {
-                font-size: 16px;
-                margin-top: 20px;
-                margin-bottom: 10px;
-            }
-        }
-    </style>
 <body>
     <form class="form">
         <div class="title">新拖延運動報名表單</div>
@@ -141,31 +164,31 @@
             <p class="location">活動地點：台北市大安區新生南路二段1號</p>
         </div>
         <div class="subtitle warning">* 必填</div>
-        <div class="warpper" data-type ="name">
+        <div class="wrapper" data-type="name">
             <div class="subtitle name">暱稱</div>
-            <input type="text" name="name"  data-type ="name" placeholder="你的名字"/>
+            <input type="text" name="name" data-type="required" placeholder="你的名字" />
         </div>
-        <div class="warpper" data-type ="email" >
+        <div class="wrapper" data-type="email">
             <div class="subtitle email">電子郵件</div>
-            <input type="email" name="email"  data-type ="email" placeholder="你的電子郵件" />
+            <input type="email" name="email" data-type="required" placeholder="你的電子郵件" />
         </div>
-        <div class="wrapper" data-type ="phone" >
+        <div class="wrapper" data-type="phone">
             <div class="subtitle phone">手機號碼</div>
-            <input type="text" name="phone"  data-type ="phone" placeholder="你的手機號碼" />
+            <input type="text" name="phone" data-type="required" placeholder="你的手機號碼" />
         </div>
-        <div class="wrapper" data-type ="type" >
+        <div class="wrapper" data-type="type">
             <div class="subtitle type">報名類型</div>
             <label>
-                <input type="radio" name="type" data-type ="type" value="躺在床上用想像力實作" />躺在床上用想像力實作
+                <input type="radio" name="type" data-type="type" value="躺在床上用想像力實作" />躺在床上用想像力實作
             </label>
             <br />
             <label>
-                <input type="radio" name="type"  data-type ="type" value="趴在地上滑手機找現成的" />趴在地上滑手機找現成的
+                <input type="radio" name="type" data-type="type" value="趴在地上滑手機找現成的" />趴在地上滑手機找現成的
             </label>
         </div>
-        <div class="wrapper" data-type ="how" >
+        <div class="wrapper" data-type="how">
             <div class="subtitle how">怎麼知道這個活動的？</div>
-            <input type="text" name="how"  data-type ="how" placeholder="你的回答" />
+            <input type="text" name="how" data-type="required" placeholder="你的回答" />
         </div>
         <div class="wrapper">
             <div class="subtitle others">其他</div>
@@ -179,77 +202,59 @@
     <div class="footer">
         <div class="footer__text">© 2020 © Copyright. All rights Reserved.</div>
     </div>
-    
-    
-    <script>
-        let name = document.querySelector('input[data-type=name]')
-        let email = document.querySelector('input[data-type=email]')
-        let phone = document.querySelector('input[data-type=phone]')
-        let how = document.querySelector('input[data-type=how]')
-        let type = document.querySelectorAll('input[data-type=type]')
 
-        function isEmpty(item, itemName) {
+
+    <script>
+        let inputs = document.querySelectorAll('[data-type=required]')
+        let radios = document.querySelectorAll('input[type=radio]')
+
+        function checkValid(item, itemName) {
+            let isAlerted = document.querySelector(`div[data-type=${itemName}]>.alert`)
+            let position = document.querySelector(`div[data-type=${itemName}]`)
             if (item.value) {
-                if (document.querySelector(`div[data-type=${itemName}]>.alert`)) {
-                    document.querySelector(`div[data-type=${itemName}]`).removeChild(
-                        document.querySelector(`div[data-type=${itemName}]>.alert`)
-                    )
-                }
+                if (isAlerted) position.removeChild(isAlerted)
                 return false
             } else {
                 const div = document.createElement('div')
                 div.classList.add('alert')
-                div.innerText = `${itemName} 欄位不得為空`
-
-                if (document.querySelector(`div[data-type=${itemName}]>.alert`)) {
-                    document.querySelector(`div[data-type=${itemName}]`).removeChild(
-                        document.querySelector(`div[data-type=${itemName}]>.alert`)
-                    )
-                }
-                document.querySelector(`div[data-type=${itemName}]`).appendChild(div)
-
+                div.innerText = `${item.placeholder} 不得為空!`
+                if (isAlerted) position.removeChild(isAlerted)
+                position.appendChild(div)
                 return true
             }
         }
 
         document.querySelector('.form').addEventListener('submit', e => {
+            e.preventDefault()
             let whichType = ''
-            
-            if (isEmpty(name, name.getAttribute('data-type'))) e.preventDefault()
-            if (isEmpty(email, email.getAttribute('data-type'))) e.preventDefault() 
-            if (isEmpty(phone, phone.getAttribute('data-type'))) e.preventDefault() 
-            if (isEmpty(how, how.getAttribute('data-type'))) e.preventDefault() 
+            let hasError = false
 
-            if (type[0].checked || type[1].checked) {
-                whichType = type[0].checked ? type[0].value : type[1].value
-                if (document.querySelector(`div[data-type=type]>.alert`)) {
-                    document.querySelector(`div[data-type=type]`).removeChild(
-                        document.querySelector(`div[data-type=type]>.alert`)
-                    )
-                }
+            for (let input of inputs) {
+                if (checkValid(input, input.getAttribute('name'))) hasError = true
+            }
+
+            let radioIsAlerted = document.querySelector(`div[data-type=type]>.alert`)
+            let radioPosition = document.querySelector(`div[data-type=type]`)
+            if (radios[0].checked || radios[1].checked) {
+                whichType = radios[0].checked ? radios[0].value : radios[1].value
+                if (radioIsAlerted) radioPosition.removeChild(radioIsAlerted)
             } else {
                 const div = document.createElement('div')
                 div.classList.add('alert')
-                div.innerText = `type 欄位必須則一`
-                if (document.querySelector(`div[data-type=type]>.alert`)) {
-                    document.querySelector(`div[data-type=type]`).removeChild(
-                        document.querySelector(`div[data-type=type]>.alert`)
-                    )
-                }
-                document.querySelector(`div[data-type=type]`).appendChild(div)
-                e.preventDefault() 
+                div.innerText = `報名類型必須則一!`
+                if (radioIsAlerted) radioPosition.removeChild(radioIsAlerted)
+                radioPosition.appendChild(div)
             }
 
-            let txt = `
-你的名字為 : ${name.value}
-你的電子郵件為 : ${email.value}
-你的手機號碼為 : ${phone.value}
-你的報名類型為 : ${whichType}
-你怎麼知道這格活動的 : ${how.value}`
+            let text = ''
+            for (let input of inputs) {
+                text += `${input.getAttribute('placeholder')}為 : ${input.value}
+`
+            }
 
-            alert(txt)
-
+            if (!hasError) alert(text)
         })
     </script>
 </body>
+
 </html>

@@ -85,10 +85,6 @@
 
 
         /* section css ----------------------------------------- */
-        .section {
-            text-align: center;
-        }
-
         div.title {
             color: black;
             font-size: 36px;
@@ -106,9 +102,12 @@
             line-height: 1.5em;
             margin: 10px 20px;
         }
+
         .section__FAQ {
             margin-bottom: 80px;
+            text-align: center;
         }
+
         .section__FAQ__warrper {
             display: flex;
             justify-content: flex-start;
@@ -116,27 +115,36 @@
             min-width: 300px;
             width: 80%;
             margin: 20px auto;
-            border-bottom: 2px solid rgba(180,240,150,0.8);
+            border-bottom: 2px solid rgba(180, 240, 150, 0.8);
         }
+
         .section__FAQ__left {
             font-size: 24px;
             color: #70b282;
-            text-shadow: 0px 0px 1px rgba(0,0,0,.3);
+            text-shadow: 0px 0px 1px rgba(0, 0, 0, .3);
             margin-right: 5px;
         }
+
         .section__FAQ__right {
             display: flex;
             flex-direction: column;
             text-align: start;
         }
+
         .section__FAQ__question {
             line-height: 36px;
+            cursor: pointer;
         }
+        .section__FAQ__question:hover {
+            color: #70b282;
+        }
+
         .section__FAQ__answer {
             color: #333;
             transform: translateY(0);
         }
-        .section__FAQ__answer.hide{
+
+        .section__FAQ__answer.hide {
             display: none;
             transform: translateY(50px);
         }
@@ -200,34 +208,21 @@
             .navbar__list li a {
                 padding: 5px 10px;
             }
-
-
-
-            iframe {
-                width: 90%;
-            }
-
-            .footer__top {
-                height: 300px;
-                flex-direction: column-reverse;
-            }
-
-            .footer__bottom {
-                height: 96px;
-            }
         }
 
-        
+
         @media (max-width: 510px) {
             .navbar__wrapper {
                 height: 160px;
             }
         }
+
         @media (max-width: 376px) {
             .navbar__site-name {
                 font-size: 24px;
                 white-space: nowrap;
             }
+
             .navbar__wrapper {
                 height: 200px;
             }
@@ -241,9 +236,6 @@
                 width: 90%;
                 margin: 1px 5px;
                 padding: 0px 10px;
-            }
-            .section__1__btn {
-                width: 100px;
             }
 
             .navbar__list li a {
@@ -272,98 +264,114 @@
         <div class="navbar__wrapper">
             <div class="navbar__site-name">Just A Bite!</div>
             <ul class="navbar__list">
-                <li class="active"><a href="#">抽個大獎</a></li>
+                <li><a href="#">抽個大獎</a></li>
                 <li><a href="#">我要點餐</a></li>
                 <li><a href="#">查詢訂單</a></li>
-                <li><a href="#">常見問題</a></li>
+                <li class="active"><a href="#">常見問題</a></li>
             </ul>
         </div>
     </nav>
 
-    <section class="section section__FAQ">
+    <section class="section__FAQ">
         <div class="title">FAQ - 常見問題</div>
         <div class="section__FAQ__warrper">
             <div class="section__FAQ__left">Q1:</div>
             <div class="section__FAQ__right">
                 <div class="section__FAQ__question">如何辦理退貨 ?</div>
-                <div class="section__FAQ__answer hide">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti inventore incidunt officia quasi cumque debitis voluptates excepturi sapiente eaque aperiam.</div>
+                <div class="section__FAQ__answer hide">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti
+                    inventore incidunt officia quasi cumque debitis voluptates excepturi sapiente eaque aperiam.</div>
             </div>
         </div>
         <div class="section__FAQ__warrper">
             <div class="section__FAQ__left">Q2:</div>
             <div class="section__FAQ__right">
                 <div class="section__FAQ__question">目前提供那些付款方式 ?</div>
-                <div class="section__FAQ__answer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut voluptates magnam quas fuga ab sapiente, obcaecati velit esse numquam facilis?</div>
+                <div class="section__FAQ__answer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut voluptates
+                    magnam quas fuga ab sapiente, obcaecati velit esse numquam facilis?</div>
             </div>
         </div>
         <div class="section__FAQ__warrper">
             <div class="section__FAQ__left">Q3:</div>
             <div class="section__FAQ__right">
                 <div class="section__FAQ__question">線上刷卡如何操作呢 ?</div>
-                <div class="section__FAQ__answer">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus voluptatibus adipisci quaerat quo ea impedit iusto at reiciendis consequuntur blanditiis!</div>
+                <div class="section__FAQ__answer">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus
+                    voluptatibus adipisci quaerat quo ea impedit iusto at reiciendis consequuntur blanditiis!</div>
             </div>
         </div>
         <div class="section__FAQ__warrper">
             <div class="section__FAQ__left">Q4:</div>
             <div class="section__FAQ__right">
                 <div class="section__FAQ__question">如何查詢目前訂單的處理情況 ?</div>
-                <div class="section__FAQ__answer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam molestias rem laboriosam quaerat atque maxime suscipit molestiae dicta a aliquid assumenda amet itaque quae quas, tenetur corrupti rerum eligendi? Aspernatur.</div>
+                <div class="section__FAQ__answer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
+                    molestias rem laboriosam quaerat atque maxime suscipit molestiae dicta a aliquid assumenda amet
+                    itaque quae quas, tenetur corrupti rerum eligendi? Aspernatur.</div>
             </div>
         </div>
         <div class="section__FAQ__warrper">
             <div class="section__FAQ__left">Q5:</div>
             <div class="section__FAQ__right">
                 <div class="section__FAQ__question">訂單成立後，是否可以取消或是更改訂單數量及商品 ?</div>
-                <div class="section__FAQ__answer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque facere sunt laudantium impedit molestiae ipsum.</div>
+                <div class="section__FAQ__answer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque
+                    facere sunt laudantium impedit molestiae ipsum.</div>
             </div>
         </div>
         <div class="section__FAQ__warrper">
             <div class="section__FAQ__left">Q6:</div>
             <div class="section__FAQ__right">
                 <div class="section__FAQ__question">我想購買的商品已經缺貨，什麼時候會進貨呢 ?</div>
-                <div class="section__FAQ__answer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus rem, obcaecati excepturi repellat sunt hic, omnis minus maxime vitae eaque distinctio provident laboriosam id, maiores magni sit quam dignissimos dolorem.</div>
+                <div class="section__FAQ__answer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus rem,
+                    obcaecati excepturi repellat sunt hic, omnis minus maxime vitae eaque distinctio provident
+                    laboriosam id, maiores magni sit quam dignissimos dolorem.</div>
             </div>
         </div>
         <div class="section__FAQ__warrper">
             <div class="section__FAQ__left">Q1:</div>
             <div class="section__FAQ__right">
                 <div class="section__FAQ__question">如何辦理退貨 ?</div>
-                <div class="section__FAQ__answer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti inventore incidunt officia quasi cumque debitis voluptates excepturi sapiente eaque aperiam.</div>
+                <div class="section__FAQ__answer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti
+                    inventore incidunt officia quasi cumque debitis voluptates excepturi sapiente eaque aperiam.</div>
             </div>
         </div>
         <div class="section__FAQ__warrper">
             <div class="section__FAQ__left">Q2:</div>
             <div class="section__FAQ__right">
                 <div class="section__FAQ__question">目前提供那些付款方式 ?</div>
-                <div class="section__FAQ__answer hide">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut voluptates magnam quas fuga ab sapiente, obcaecati velit esse numquam facilis?</div>
+                <div class="section__FAQ__answer hide">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut
+                    voluptates magnam quas fuga ab sapiente, obcaecati velit esse numquam facilis?</div>
             </div>
         </div>
         <div class="section__FAQ__warrper">
             <div class="section__FAQ__left">Q3:</div>
             <div class="section__FAQ__right">
                 <div class="section__FAQ__question">線上刷卡如何操作呢 ?</div>
-                <div class="section__FAQ__answer">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus voluptatibus adipisci quaerat quo ea impedit iusto at reiciendis consequuntur blanditiis!</div>
+                <div class="section__FAQ__answer">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus
+                    voluptatibus adipisci quaerat quo ea impedit iusto at reiciendis consequuntur blanditiis!</div>
             </div>
         </div>
         <div class="section__FAQ__warrper">
             <div class="section__FAQ__left">Q4:</div>
             <div class="section__FAQ__right">
                 <div class="section__FAQ__question">如何查詢目前訂單的處理情況 ?</div>
-                <div class="section__FAQ__answer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam molestias rem laboriosam quaerat atque maxime suscipit molestiae dicta a aliquid assumenda amet itaque quae quas, tenetur corrupti rerum eligendi? Aspernatur.</div>
+                <div class="section__FAQ__answer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
+                    molestias rem laboriosam quaerat atque maxime suscipit molestiae dicta a aliquid assumenda amet
+                    itaque quae quas, tenetur corrupti rerum eligendi? Aspernatur.</div>
             </div>
         </div>
         <div class="section__FAQ__warrper">
             <div class="section__FAQ__left">Q5:</div>
             <div class="section__FAQ__right">
                 <div class="section__FAQ__question">訂單成立後，是否可以取消或是更改訂單數量及商品 ?</div>
-                <div class="section__FAQ__answer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque facere sunt laudantium impedit molestiae ipsum.</div>
+                <div class="section__FAQ__answer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque
+                    facere sunt laudantium impedit molestiae ipsum.</div>
             </div>
         </div>
         <div class="section__FAQ__warrper">
             <div class="section__FAQ__left">Q6:</div>
             <div class="section__FAQ__right">
                 <div class="section__FAQ__question">我想購買的商品已經缺貨，什麼時候會進貨呢 ?</div>
-                <div class="section__FAQ__answer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus rem, obcaecati excepturi repellat sunt hic, omnis minus maxime vitae eaque distinctio provident laboriosam id, maiores magni sit quam dignissimos dolorem.</div>
+                <div class="section__FAQ__answer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus rem,
+                    obcaecati excepturi repellat sunt hic, omnis minus maxime vitae eaque distinctio provident
+                    laboriosam id, maiores magni sit quam dignissimos dolorem.</div>
             </div>
         </div>
     </section>
@@ -386,26 +394,29 @@
     </footer>
 
     <script>
-        const question = document.querySelectorAll('.section__FAQ__question')
-        const answer = document.querySelectorAll('.section__FAQ__answer')
+        const questions = document.querySelectorAll('.section__FAQ__question')
+        const answers = document.querySelectorAll('.section__FAQ__answer')
         // 設定 data
-        for (let i = 0; i < answer.length; i++) {
-            question[i].setAttribute('data-num' , i)
+        function setData() {
+            for (let i = 0; i < answers.length; i++) {
+                questions[i].setAttribute('data-num', i)
+            }
         }
 
         // 將為選中的的加入 hide class
-        function clear(num=0) {
-            for (let i = 0; i < answer.length; i++) {
-                if (i !== Number(num) ) answer[i].classList.add('hide')
+        function clearCSS(num = 0) {
+            for (let i = 0; i < answers.length; i++) {
+                if (i !== Number(num)) answers[i].classList.add('hide')
             }
         }
-        clear()
+        clearCSS()
 
-        question.forEach( e => {
+        questions.forEach(e => {
+            setData()
             e.addEventListener('click', evt => {
                 let num = evt.target.getAttribute('data-num')
-                answer[num].classList.toggle('hide')
-                clear(num)
+                answers[num].classList.toggle('hide')
+                clearCSS(num)
             })
         })
 
