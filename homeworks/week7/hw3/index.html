@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: '微軟正黑體';
+        }
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #555;
+        }
+        iframe {
+            width: 100vw;
+            height: 100vh;
+            position: absolute;
+            left: 0;
+            top: 0;
+            border: none;
+            filter: brightness(.6);
+            filter: blur(1px);
+            z-index: -1;
+            overflow: hidden;
+        }
+        .wrapper {
+            margin: 60px auto;
+            width: 80%;
+            max-width: 800px;
+            min-width: 300px;
+            background-color: #ffe;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 2px 2px rgba(255,255,255,0.5)
+        }
+        .title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #88e;
+            text-align: center;
+            margin: 20px auto;
+            position: relative;
+        }
+        .title:after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            box-shadow: 10px -10px;
+            background-color: #ffe;
+            animation: move 2s infinite;
+        }
+
+        @keyframes move {
+            0% {
+                box-shadow: 30px -30px #88e;
+                transform: translate(-30px,30px);
+            }
+            100% {
+                box-shadow: -30px 30px #88e;
+                transform: translate(30px,-30px);
+            }
+        }
+
+
+        .text__wrapper {
+            text-align: center;
+            margin: 20px auto;
+            display: flex;
+            justify-content: space-between;
+            align-content: center;
+        }
+        .text__input {
+            outline: none;
+            border: none;
+            background: none;
+            width: calc(100% - .5rem);
+            border-bottom: 2px solid #888;
+            transition: all 0.3 ease-in;
+            color: #333;
+            font-size: 1.5rem;
+            line-height: 1.5rem;
+            padding-left: .5rem;
+        }
+        .text__input:focus, .text__input:hover {
+            transition: all 0.3 ease-in;
+            border-bottom: 2px solid #88e;
+        }
+        .text__btn {
+            font-size: 1.2rem;
+            line-height: 1.2rem;
+            text-align: center;
+            width: 30px;
+            height: 30px;
+            border: 2px solid #8e8;
+            background-color: #8e8;
+            border-radius: .3rem;
+            cursor: pointer;
+        }
+
+        .item {
+            margin: 10px auto;
+            display: flex;
+            justify-content: space-between;
+            align-content: center;
+        }
+        .item__thing {
+            display: flex;
+            align-content: center;
+        }
+        .item__check {
+            transform: translateY(0.3rem);
+            width: 1rem;
+            height: 1rem;
+            min-width: 1rem;
+            min-height: 1rem;
+            margin-right: 10px;
+        }
+        input:checked + label{
+            color: #aaa;
+            text-decoration: line-through;
+        }
+        label {
+            width: 100%;
+            min-width: 250px;
+        }
+
+        .item__btn {
+            font-size: 1.2rem;
+            line-height: 1.2rem;
+            text-align: center;
+            width: 30px;
+            height: 30px;
+            border: 2px solid #e88;
+            background-color: #e88;
+            border-radius: .3rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <iframe src="./bg.html"></iframe>
+    <div class="wrapper">
+        <div class="title">Todo List</div>
+        <div class="text__wrapper">
+            <input class ="text__input" type="text" placeholder="Do Somthing ... ( string limit 30 )" />
+            <button class="text__btn" >➕</button>
+        </div>
+        <ol class="list">
+            <li class="item">
+                <div class="item__thing"><input class="item__check" type="checkbox"/ ><label>Say Hi</lable></div>
+                <button class="item__btn">➖</button>
+            </li>
+            <li class="item">
+                <div class="item__thing"><input class="item__check" type="checkbox"/ ><label>Hello World</lable></div>
+                <button class="item__btn">➖</button>
+            </li>
+        </ol>
+    </div>
+    <script>
+        const textBtn = document.querySelector('.text__btn')
+        function escapeHtml(unsafe) {
+            return unsafe
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        textBtn.addEventListener('click', e => {
+            if (document.querySelector('.text__input').value.trim()) {
+                let msg = document.querySelector('.text__input').value
+                if (msg.length > 30) {
+                    e.preventDefault()
+                    return alert('超過 30，我受不了QQ')
+                }
+                const li = document.createElement('li')
+                li.classList.add('item')
+                li.innerHTML = `
+                <div class="item__thing"><input class="item__check" type="checkbox"/ ><label>${escapeHtml(msg)}</lable></lab></div>
+                <button class="item__btn">➖</button>`
+
+                document.querySelector('.list').appendChild(li)
+                document.querySelector('.text__input').value = ""
+            } else {
+                e.preventDefault()
+                alert('輸入空白不算做事喔')
+            }
+        })
+
+        document.querySelector('.list').addEventListener('click', e => {
+            if (e.target.classList.contains('item__btn')) {
+                document.querySelector('.list').removeChild(
+                    e.target.closest('.item')
+                )
+            }
+        })
+
+    </script>
+</body>
+</html>
