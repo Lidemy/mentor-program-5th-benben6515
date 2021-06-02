@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Probability</title>
+</head>
+<body>
+    <h1>測試機率 10 次</h1>
+    <p>請開啟 F12 </p>
+    <hr>
+    <h2>經測 3000 次</h2>
+    <p>頭獎 : 約為 5% ( 162 ) </p>
+    <p>二獎 : 約為 20% ( 597 )</p>
+    <p>三獎 : 約為 30% ( 896 )</p>
+    <p>銘謝惠顧 : 約為 40% ( 1195) </p>
+    <p>錯誤 : 約為 5% ( 60/undefined + 90/error )</p>
+
+    <script>
+        let objs = {}
+        
+        let request = new XMLHttpRequest()
+        
+        for (let i = 0; i < 10; i++){
+            request.open('GET', 'https://dvwhnbka7d.execute-api.us-east-1.amazonaws.com/default/lottery', false)
+            request.send()
+            let message
+            if (request.status >= 200 && request.status < 400) {
+                console.log(request.responseText)
+                try {
+                    message = JSON.parse(request.responseText).prize
+                }
+                catch (err) {
+                    message = "ERROR"
+                    console.log(err)
+                }
+            } else {
+                message = "ERROR"
+                console.log(request.status, request.responseText)
+            }
+            if (!objs.hasOwnProperty(message)) {
+                objs[message] = 1
+            } else {
+                objs[message]++
+            }
+        }
+        
+        console.table(objs)
+    </script>
+</body>
+</html>

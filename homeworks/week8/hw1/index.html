@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>餐廳 FQA</title>
+
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* reset css */
+        * {
+            font-family: Questrial, 微軟正黑體;
+            position: relative;
+            transition: all 0.3s ease-in;
+            letter-spacing: 1px;
+            line-height: 1.5em;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 5;
+        }
+
+        .navbar {
+            box-shadow: -1.4px -1.4px 6px 0 #97a2a0;
+        }
+
+        .navbar__wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 84px;
+            background: white;
+            padding: 0px 100px;
+            margin: 0px auto;
+            padding: 0px 12px;
+        }
+
+        .navbar__site-name {
+            font-size: 36px;
+            color: #489846;
+            margin-left: 8%;
+        }
+
+        /* navbar__list css ----------------------------------------- */
+        .navbar__list {
+            font-size: 18px;
+            list-style: none;
+            margin: 0px;
+            padding: 0px;
+            display: flex;
+        }
+
+        .navbar__list li {
+            margin-left: 12px;
+            border-radius: 8px;
+            transition: 0.3s ease-in;
+        }
+
+        .navbar__list li.active,
+        .navbar__list li:hover {
+            color: white;
+            background: #ff7286;
+        }
+
+        .navbar__list li a {
+            display: block;
+            text-decoration: none;
+            color: black;
+            padding: 12px 24px;
+        }
+
+        .navbar__list li.active a,
+        .navbar__list li:hover a {
+            color: white;
+        }
+
+
+        /* section css ----------------------------------------- */
+        .section {
+            text-align: center;
+        }
+
+        .image {
+            width: 100%;
+            height: 90vh;
+            vertical-align: bottom;
+            object-fit: cover;
+        }
+
+        .infos {
+            display: inline-block;
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 6px;
+            max-width: 480px;
+            min-width: 300px;
+            padding: 15px;
+            /* display: none; */
+        }
+
+        .infos__title {
+            color: #5ec1b6;
+            font-weight: bold;
+        }
+
+        .infos__wrapper {
+            list-style: none;
+            padding: 0px;
+            text-align: left;
+        }
+
+        .infos__item {
+            display: flex;
+            border-bottom: 1px solid #ccc;
+            margin: 10px auto;
+        }
+
+        .infos__date,
+        .infos__message,
+        .infos__prizes {
+            min-width: 100px;
+            font-weight: bold;
+        }
+
+        .get__prize {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 60px;
+            background-color: #ff7286;
+            border: none;
+            border-radius: 6px;
+            padding: 5px 60px;
+            color: #eee;
+            cursor: pointer;
+        }
+
+        .get__prize:hover {
+            font-weight: bold;
+            box-shadow: 0px 0px 5px 5px rgba(255, 255, 255, .5);
+        }
+
+        .message {
+            font-size: 32px;
+            font-weight: blod;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            padding: 5px 30px;
+            transform: translate(-50%, -50%);
+            color: #ff7286;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        .write {
+            color: #fff;
+        }
+
+        .loading {
+            display: inline-block;
+            /* display: none; */
+            position: absolute;
+            top: 60%;
+            left: calc(50% - 15px);
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #ff7286;
+            z-index: -1;
+            animation: .5s move infinite;
+        }
+
+        @keyframes move {
+            0% {
+                box-shadow: 30px 0px #ff7286;
+                transform: translateX(-30px);
+            }
+
+            100% {
+                box-shadow: -30px 0px #ff7286;
+                transform: translateX(30px);
+            }
+        }
+
+        /* footer -----------------------------------------*/
+        .footer__top {
+            height: 186px;
+            display: flex;
+            justify-content: space-between;
+            background-color: #e8efee;
+        }
+
+        .footer__top__left {
+            margin-left: 40px;
+            color: #484848;
+        }
+
+        .footer__top__right {
+            margin-left: 40px;
+            margin-right: 6%;
+            margin-top: 20px;
+        }
+
+        .footer__site__name {
+            font-size: 36px;
+            color: #489846;
+        }
+
+        .footer__site__map {
+            font-size: 14px;
+            color: #484848;
+        }
+
+        .footer__bottom {
+            background-color: #35564b;
+            height: 48px;
+        }
+
+        .footer__bottom__text {
+            font-size: 14px;
+            color: white;
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* RWD ----------------------------------------- */
+
+        @media (max-width: 850px) {
+            .navbar__wrapper {
+                height: 120px;
+                flex-direction: column;
+            }
+
+            .navbar__list li {
+                margin: 10px 10px;
+            }
+
+            .navbar__list li a {
+                padding: 5px 10px;
+            }
+        }
+
+
+        @media (max-width: 510px) {
+            .navbar__wrapper {
+                height: 160px;
+            }
+        }
+
+        @media (max-width: 376px) {
+            .navbar__site-name {
+                font-size: 24px;
+                white-space: nowrap;
+            }
+
+            .navbar__wrapper {
+                height: 200px;
+            }
+
+            .navbar__list {
+                display: block;
+            }
+
+            .navbar__list,
+            .navbar__list>li {
+                width: 90%;
+                margin: 1px 5px;
+                padding: 0px 10px;
+            }
+
+            .navbar__list li a {
+                margin: 0px 2px;
+                width: 90%;
+                text-align: center;
+            }
+            .message {
+                font-size: 20px;
+            }
+            .footer__top {
+                height: 360px;
+            }
+
+            .footer__bottom {
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar__wrapper">
+            <div class="navbar__site-name">Just A Bite!</div>
+            <ul class="navbar__list">
+                <li class="active"><a href="#">抽個大獎</a></li>
+                <li><a href="#">我要點餐</a></li>
+                <li><a href="#">查詢訂單</a></li>
+                <li><a href="#">常見問題</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="section">
+        <img class="image" src="./bg.jpg" alt="背景">
+        <div class="infos">
+            <div class="infos__title">2021 夏日輕盈特賞！ 抽獎活動辨法</div>
+            <ul class="infos__wrapper">
+                <li class="infos__item">
+                    <div class="infos__date">活動期間 : </div>
+                    <div class="infos__date__msg">2021/06/01 ~ 2021/07/01</div>
+                </li>
+                <li class="infos__item">
+                    <div class="infos__message">活動說明 : </div>
+                    <div class="infos__message__msg">今天老闆佛心來著決定給大家發獎勵，有看有機會，沒看只能幫QQ！只要在店內消費滿1000000元即有機會獲得 -
+                        頭獎日本東京來回雙人遊！</div>
+                </li>
+                <li class="infos__item">
+                    <div class="infos__prizes">獎  品 : </div>
+                    <div class="infos__prizes__msg">❤ 頭獎一名：日本東京來回雙人遊(市價14990元) <br>
+                        ❤ 貳獎三名：90 吋電視一台(市價5990元) <br>
+                        ❤ 參獎十名：知名 YouTuber 簽名握手會入場券一張(市價1500元)</div>
+                </li>
+            </ul>
+        </div>
+        <button class="get__prize">我要抽獎</button>
+        <div class="loading"></div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer__top">
+            <div class="footer__top__left">
+                <p class="innter__text">餐館地址: 天上地下天堂路三分之一里六段520號</p>
+                <p class="innter__text">訂位專線：02-1314-5566</p>
+                <p class="innter__text">營業時間：週一〜週五 09:00~18:00 / 週六、週日、國定假日（含連假）休息</p>
+                <p class="innter__text">email：service@justabite.com.tw</p>
+            </div>
+            <div class="footer__top__right">
+                <div class="footer__site__name">Just A Bite!</div>
+                <div class="footer__site__map">Facebook / Instagram / Youtube</div>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <p class="footer__bottom__text">Copyright © 2020 Just A Bite All Rights Reserved. 咬一口股份有限公司版權所有</p>
+        </div>
+    </footer>
+    
+    <script>
+        const btn = document.querySelector('.get__prize')
+        const request = new XMLHttpRequest()
+        
+        btn.addEventListener('click', getPrize)
+
+        function getPrize() {
+            // loading
+            Isloading(true)
+            renderMessage('reset')
+            document.querySelector('.infos').style.display = 'none'
+            
+            // send request
+            request.open('GET', 'https://dvwhnbka7d.execute-api.us-east-1.amazonaws.com/default/lottery', true)
+            request.send()
+            request.addEventListener('load', e => {
+                let message
+                if (request.status >= 200 && request.status < 400) {
+                    try {
+                        message = JSON.parse(request.responseText).prize
+                    }
+                    catch (err) {
+                        message = "ERROR"
+                        console.log(err)
+                    }
+                } else {
+                    message = "ERROR"
+                    console.log(request.status, request.responseText)
+                }
+                Isloading(false)
+                renderMessage(message)
+            })
+        }
+        function Isloading(bool) {
+            let image = document.querySelector('.image')
+            let loading = document.querySelector('.loading')
+            if (bool) {
+                image.style.filter = "brightness(0.5)"
+                loading.style.zIndex = "5"
+            } else {
+                image.style.filter = "brightness(1)"
+                loading.style.zIndex = "-1"
+            }
+        }
+        function renderMessage(msg) {
+            let messaged = document.querySelector('.message')
+            let section = document.querySelector('.section')
+            let image = document.querySelector('.image')
+            
+            // toggle message
+            if (messaged) section.removeChild(messaged)
+
+            // create message
+            let div = document.createElement('div')
+            div.classList.add('message')
+
+            if (msg === "reset") {
+                div.classList.add('write')
+                div.innerText = '請稍後...'
+                image.src = "bg.jpg"
+            }else if (msg === 'FIRST') {
+                div.innerText = '恭喜你中頭獎了！日本東京來回雙人遊！'
+                image.src = "https://cdn.pixabay.com/photo/2019/07/04/06/35/flight-4315953_1280.jpg"
+            } else if (msg === 'SECOND') {
+                div.innerText = '二獎！90 吋電視一台！'
+                image.src = "https://cdn.pixabay.com/photo/2016/11/30/08/46/living-room-1872192_1280.jpg"
+            } else if (msg === 'THIRD') {
+                div.innerText = '恭喜你抽中三獎：知名 YouTuber 簽名握手會入場券一張，bang！'
+                image.src = "https://cdn.pixabay.com/photo/2017/08/10/03/00/youtube-2617510_1280.jpg"
+            } else if (msg === 'NONE') {
+                div.classList.add('write')
+                div.innerText = '銘謝惠顧'
+                image.src = "https://cdn.pixabay.com/photo/2017/11/06/23/19/composing-2925179_1280.jpg"
+            } else if (msg === 'ERROR') {
+                div.innerText = '系統不穩定，請再試一次'
+                image.src = "https://cdn.pixabay.com/photo/2019/02/04/08/38/pixel-cells-3974187_1280.png"
+            } else {
+                div.classList.add('write')
+                div.innerText = '出現錯誤啦，請再試一次'
+                image.src = "https://cdn.pixabay.com/photo/2019/02/04/08/38/pixel-cells-3974187_1280.png"
+                console.log('error')
+            }
+
+            section.appendChild(div)
+        }
+
+    </script>
+</body>
+
+</html>
