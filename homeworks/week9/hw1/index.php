@@ -63,7 +63,7 @@
           <!-- <span>暱稱 : </span>
           <input type="text" name="nickname" /> -->
         </div>
-        <textarea class="content-input" type="textarea" name="content" rows="5" /></textarea>
+        <textarea class="content-input" type="textarea" name="content" rows="5" cols="30"/></textarea>
       <?php if ($username) { ?>
         <input class="content-submit" type="submit" value="送出" />
       <?php } else { ?>
