@@ -2,12 +2,6 @@
   session_start();
   require_once('conn.php');
   require_once('utils.php');
-  require_once('check_permission.php');
-
-  if (empty($_SESSION["username"])) {
-    header('Location: index.php');
-    exit;
-  }
 
     $stmt = $conn->prepare(
     "SELECT
