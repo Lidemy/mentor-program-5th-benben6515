@@ -112,7 +112,7 @@
 
 .posts, .container {
   background: white;
-  padding: 6px;
+  padding: 1rem;
   display: inline-flex;
   margin: 0 auto;
   margin-top: -30px;
@@ -154,6 +154,7 @@
   margin-top: 17px;
   white-space: pre-wrap;
   line-height: 1.5em;
+  word-break: break-all;
 }
 
 .btn-read-more {

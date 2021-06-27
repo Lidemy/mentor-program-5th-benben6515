@@ -47,6 +47,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="normalize.css" />
   <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.ckeditor.com/ckeditor5/28.0.0/classic/ckeditor.js"></script>
 </head>
 
 <body>
@@ -68,7 +69,7 @@
             <input name="title" class="edit-post__input" placeholder="請輸入文章標題" value="<?php echo escape($row["title"]); ?>"/>
           </div>
           <div class="edit-post__input-wrapper">
-            <textarea name="content" rows="20" class="edit-post__content"><?php echo escape($row["content"]); ?></textarea>
+            <textarea id="editor" name="content" rows="20" class="edit-post__content"><?php echo escape($row["content"]); ?></textarea>
           </div>
           <div class="edit-post__btn-wrapper">
               <input type="submit" class="edit-post__btn" value="編輯"/>
@@ -80,5 +81,12 @@
     </div>
   </div>
 
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
 </body>
 </html>

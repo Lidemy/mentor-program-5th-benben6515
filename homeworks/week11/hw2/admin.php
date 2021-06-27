@@ -33,7 +33,6 @@
     die('Error' . $conn->error);
   }
   $result = $stmt->get_result();
-  var_dump($result);
 
 ?>
 

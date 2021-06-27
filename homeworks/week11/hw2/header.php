@@ -5,7 +5,7 @@
 ?>
 
 <div class="bg">
-  <footer>Copyright © 2020 Who's Blog All Rights Reserved.</footer>
+  <footer>Copyright © 2020 Benben's Blog All Rights Reserved.</footer>
 </div>
 <nav class="navbar">
   <div class="wrapper navbar__wrapper">
@@ -14,9 +14,9 @@
     </div>
     <ul class="navbar__list">
       <div>
-        <li><a href="#">文章列表</a></li>
-        <li><a href="#">分類專區</a></li>
-        <li><a href="#">關於我</a></li>
+        <li><a href="list.php">文章列表</a></li>
+        <li><a href="https://blog.huli.tw/">Huli 我老師</a></li>
+        <li><a href="https://github.com/benben6515">關於我</a></li>
       </div>
       <div>
         <?php if(!empty($_SESSION["username"])) { ?>

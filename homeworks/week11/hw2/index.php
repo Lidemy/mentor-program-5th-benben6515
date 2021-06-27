@@ -20,7 +20,9 @@
     WHERE
       P.is_deleted = 0
     ORDER BY
-      id DESC"
+      id DESC
+    LIMIT
+      5"
   );
   $result = $stmt->execute();
   if (!$result) {
@@ -65,11 +67,12 @@
           <?php echo escape($row["created_at"]); ?>
         </div>
         <div class="post__content">
-          <?php echo substr(escape($row["content"]), 0, 150); ?>
+          <?php echo substr($row["content"], 0, 150); ?>
         </div>
         <a class="btn-read-more" href="post.php?id=<?php echo escape($row["id"]); ?>">READ MORE</a>
       </article>
       <?php } ?>
+      <a class="btn-read-more" href="list.php">更多文章</a>
     </div>
   </div>
 
