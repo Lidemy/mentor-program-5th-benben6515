@@ -12,7 +12,7 @@
 
   $username = $_SESSION['username'];
   $content = $_POST['content'];
-  $user = getUserFromUsername($user);
+  $user = getUserFromUsername($username);
   
   if (!hasPermission($user, 'create', NULL)) {
     header("Location: index.php");
