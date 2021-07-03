@@ -1,0 +1,46 @@
+/* reset bootstrap css */
+
+.container.wrap {
+	background: rgba(255,255,255,0.8);
+	padding: 1rem;
+	border-radius: .5rem;
+	border: 1px solid #fff;
+	box-shadow: 0px 0px 10px 2px #fff;
+}
+.jumbotron, .btn-primary {
+	background: #f99;
+	color: #fff;
+}
+.btn-primary:hover, .btn-primary:active, .btn-primary:focus {
+	background: #fcc;
+}
+
+.display-4, .lead {
+	font-weight: 400;
+}
+
+.card {
+	margin: 1rem 0;
+}
+
+/* background css ------ */
+.bg {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index:-1;
+}
+iframe {
+  width: 200vw;
+  height: 200vh;
+  overflow: hidden;
+  border: none;
+  position: absolute;
+  top: -20vh;
+  left: -90vw;
+  z-index: -1;
+}
+
