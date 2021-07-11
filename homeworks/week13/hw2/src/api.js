@@ -14,7 +14,7 @@ export function getComments(apiUrl, site_key, before, cb) {
 export function addComments(apiUrl,site_key, data, cb) {
   $.ajax({
     type: 'POST',
-    url: `${apiUrl}/api_comments_add.php`,
+    url: `${apiUrl}/add_comments_add.php`,
     data
   }).done( data => {
     cb(data)
