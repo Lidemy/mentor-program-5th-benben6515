@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week13 留言板 plugin</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="./dist/main.js"></script>
+  <script>
+    $(document).ready( () => {
+      commentPlugin.init({
+        siteKey: 'Benben01',
+        apiUrl: 'http://mentor-program.co/mtr04group2/Benben/week12/hw1/',
+        containerSelector: '.comment-area'
+      })
+      commentPlugin.init({
+        siteKey: 'Benben02',
+        apiUrl: 'http://mentor-program.co/mtr04group2/Benben/week12/hw1/',
+        containerSelector: '.comment-area'
+      })
+    })
+  </script>
+</head>
+<body>
+
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">留言板 Plugin</h1>
+    </div>
+  </div>
+
+  <div class="container wrap">
+    <div class="comment-area"></div>
+
+  </div>
+
+</body>
+</html>
