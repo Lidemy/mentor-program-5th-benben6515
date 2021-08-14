@@ -5,7 +5,7 @@
 
 
 ## 請寫下這週部署的心得
-- hw1 : https://dashboard.heroku.com/apps/pacific-eyrie-76598
+- hw1 : https://pacific-eyrie-76598.herokuapp.com/
 - hw2 : https://limitless-reef-07762.herokuapp.com/
   - 抽獎 API : https://limitless-reef-07762.herokuapp.com/prizeApiRandom
   - 所有獎項 API : https://limitless-reef-07762.herokuapp.com/prizeApiAll
