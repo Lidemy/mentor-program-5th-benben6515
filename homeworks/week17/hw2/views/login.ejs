@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<%- include('templates/head') %>
+</head>
+<body>
+	<%- include('templates/nav') %> 
+	<main>
+	<div class="wrap wrap__login">
+		<div class="wrap__top">
+			<div class="wrap__title">Login</div>
+		</div>
+		<hr>
+		<div class="login__items">
+		<form action="login" method="POST">
+			<% if (error) { %>
+			<div class="login__item"><%= error %></div>
+			<% } %> 
+			<div class="login__item">帳號 : 
+				<input class="login__input" type="text" name="username" />
+			</div>
+			
+			<div class="login__item">密碼 : 
+				<input class="login__input" type="password" name="password" />
+			</div>
+			<button class="btn btn__submit">提交</button>
+		</form>
+		</div>
+	</div>
+	</main>
+	<footer>Copyright © 2021 Benben All Rights Reserved.</footer>
+</body>
+</html>

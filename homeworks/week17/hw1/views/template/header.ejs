@@ -1,0 +1,29 @@
+<div class="bg"></div>
+<nav class="navbar">
+	<div class="wrapper navbar__wrapper">
+		<div class="navbar__site-name">
+			<a href='/'>Benben's Blog</a>
+		</div>
+		<ul class="navbar__list">
+			<div>
+				<li><a href="../list">文章列表</a></li>
+				<li><a href="https://blog.huli.tw/">Huli 我老師</a></li>
+				<li><a href="https://github.com/benben6515">關於我</a></li>
+			</div>
+			<div>
+				<% if(username) { %>
+					<% if(username === 'admin') { %>
+						<li><a href="/postAdd">發布文章</a></li>
+					<% } else { %>
+						<li><a href="/list">管理後台</a></li>
+					<% } %>
+					<li><a href="/logout">登出</a></li>
+				<% } else { %>
+					<li><a href="/login">登入</a></li>
+				<% } %>
+			</div>
+		</ul>
+	</div>
+</nav>
+
+<footer>Copyright © 2021 Benben's Blog All Rights Reserved.</footer>
