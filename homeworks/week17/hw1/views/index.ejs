@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+  <%- include('template/head.ejs') %>
+</head>
+
+<body>
+  <%- include('template/header.ejs') %>
+
+  <section class="banner">
+    <div class="banner__wrapper">
+      <h1>存放技術之地</h1>
+      <div>Welcome to my life</div>
+    </div>
+  </section>
+  <div class="container-wrapper">
+    <div class="posts">
+      <% data.forEach( e => {  %>
+      <article class="post">
+        <div class="post__header">
+          <div><%= e.title %></div>
+          <div class="post__actions">
+            <% if (username) { %>
+              <a class="post__action" href="postUpdate/<%= e.id %>">編輯</a>
+              <a class="post__action" href="postDelete/<%= e.id %>">刪除</a>
+            <% } %>
+          </div>
+        </div>
+        <div class="post__info">
+          Date : <%= e.date %>
+        </div>
+        <div class="post__content">
+          <%- e.content %>
+        </div>
+        <a class="btn-read-more" href="post/<%- e.id %>">READ MORE</a>
+      </article>
+      <% }) %>
+      <a class="btn-read-more" href="list">更多文章</a>
+    </div>
+  </div>
+
+</body>
+</html>

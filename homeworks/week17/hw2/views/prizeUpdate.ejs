@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<%- include('templates/head') %>
+</head>
+<body>
+	<%- include('templates/nav') %> 
+	<div class="wrap">
+		<div class="wrap__top">
+			<div class="wrap__title">編輯獎品</div>
+		</div>
+		<hr>
+		<div class="items">
+
+			<form action="/prizeUpdate/<%= prize.id %>" method="POST">
+				<div class="item item__backstage">
+					<img class="item__img" src="<%= prize.url %> " alt="">
+					<div class="item__backstage__infos">
+						<div class="item__title">品項 : <input type="text" name="title" value="<%= prize.title %>"></div>
+						<div class="item__link">網址 : <input type="text" name="url" value="<%= prize.url %>"></div>
+						<div class="item__weight">權重 : <input type="text" name="weight" value="<%= prize.weight %>"></div>
+						<div class="item__content">敘述 : <input type="text" name="content" value="<%= prize.content %>"></div>
+					</div>
+				</div>
+				<button class="btn btn__submit">提交</button>
+			</form>
+
+		</div>
+	</div>
+	<footer>Copyright © 2021 Benben All Rights Reserved.</footer>
+</body>
+</html>

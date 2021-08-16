@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<%- include('templates/head') %>
+</head>
+<body>
+	<%- include('templates/nav') %> 
+	<div class="wrap">
+		<div class="wrap__top">
+			<div class="wrap__title">恭喜中獎！！！</div>
+		</div>
+		<hr>
+		<div class="items">
+
+				<div class="item item__backstage">
+					<img class="item__img" src="<%= prize.url%>" alt="">
+					<div class="item__backstage__infos">
+						<div class="item__title">品項 : <%= prize.title %></div>
+						<div class="item__content">敘述 : <%= prize.content %></div>
+					</div>
+				</div>
+				<a class="btn btn__submit" href="prizeGet">再抽一次</a>
+			</form>
+
+		</div>
+	</div>
+	<footer>Copyright © 2021 Benben All Rights Reserved.</footer>
+</body>
+</html>

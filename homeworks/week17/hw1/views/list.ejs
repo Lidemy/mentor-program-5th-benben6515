@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+  <%- include('template/head.ejs') %>
+</head>
+
+<body>
+  <%- include('template/header.ejs') %>
+
+  <section class="banner">
+    <div class="banner__wrapper">
+      <h1>存放技術之地</h1>
+      <div>Welcome to my life</div>
+    </div>
+  </section>
+  <div class="container-wrapper">
+    <div class="container">
+      <div class="admin-posts">
+  
+        <% data.forEach( e=> { %>
+          <div class="admin-post">
+            <div class="admin-post__title">
+              <%= e.title %>
+            </div>
+            <div class="admin-post__info">
+              <div class="admin-post__created-at">
+                <%= e.date %>
+              </div>
+              <a class="admin-post__btn" href="post/<%= e.id %>">Read</a>
+            </div>
+          </div>
+          <% }) %>
+  
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

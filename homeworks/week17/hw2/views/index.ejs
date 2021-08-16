@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<%- include('templates/head') %>
+</head>
+<body>
+	<%- include('templates/nav') %> 
+	<div class="wrap">
+		<div class="wrap__top">
+			<div class="wrap__title">先看看有哪些獎品吧！</div>
+			<a class="btn btn__link" href="prizeGet">抽！</a>
+		</div>
+		<hr>
+		<div class="items">
+
+			<% prizes.forEach((e) => { %> 
+				<div class="item">
+					<img class="item__img" src="<%= e.url %>" alt="">
+					<div class="item__triangle"></div>
+					<div class="item__title">品項 : <%= e.title %> </div>
+					<div class="item__content">敘述 : <%= e.content %></div>
+				</div>
+			<% }) %> 
+
+		</div>
+	</div>
+	<footer>Copyright © 2021 Benben All Rights Reserved.</footer>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+  <%- include('template/head.ejs') %>
+</head>
+
+<body>
+  <%- include('template/header.ejs') %>
+
+  <section class="banner">
+    <div class="banner__wrapper">
+      <h1>存放技術之地</h1>
+      <div>Welcome to my life</div>
+    </div>
+  </section>
+  <div class="container-wrapper">
+    <div class="posts">
+      <article class="post">
+        <div class="post__header">
+          <div><%= data.title %></div>
+          <div class="post__actions">
+            <% if (username) { %>
+              <a class="post__action" href="postUpdate/<%= data.id %>">編輯</a>
+            <% } %>
+          </div>
+        </div>
+        <div class="post__info">
+          <%= data.date %>
+        </div>
+        <div class="post__content">
+          <%- data.content %>
+        </div>
+      </article>
+      <a class="btn-read-more" href="../list">更多文章</a>
+    </div>
+  </div>
+
+</body>
+</html>
