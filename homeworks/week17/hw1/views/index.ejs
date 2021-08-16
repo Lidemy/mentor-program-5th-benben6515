@@ -19,7 +19,7 @@
       <% data.forEach( e => {  %>
       <article class="post">
         <div class="post__header">
-          <div><%- e.title %></div>
+          <div><%= e.title %></div>
           <div class="post__actions">
             <% if (username) { %>
               <a class="post__action" href="postUpdate/<%= e.id %>">編輯</a>
