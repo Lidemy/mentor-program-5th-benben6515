@@ -55,7 +55,7 @@ const TodoItem = ({ todo, isDoneToggle, deleteTodoHandler, editTodoHandler }) =>
           onClick={isDoneClick}
           $isDone={todo.isDone}
         >
-          {todo.isDone ? "已完成" : "末完成"}
+          {todo.isDone ? "已完成" : "未完成"}
         </ButtonGreen>
         <Button onClick={editClick}>編輯</Button>
         <Button backgroundColor="#f88" onClick={deleteClick}>刪除</Button>
