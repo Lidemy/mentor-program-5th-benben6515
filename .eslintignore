@@ -1,3 +1,5 @@
 examples/
-**/week21/
-**/week22/
+
+# use react eslint
+homeworks/week21/
+homeworks/week22/
